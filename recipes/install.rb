@@ -4,8 +4,7 @@ bash "install-golang" do
   code <<-EOH
     rm -rf go
     rm -rf /usr/local/go
-    tar -xzf #{node["go"]["filename"]}
-    cp -r go /usr/local/
+    tar -C /usr/local -xzf #{node["go"]["filename"]}
   EOH
   action :nothing
 end
