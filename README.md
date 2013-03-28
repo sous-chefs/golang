@@ -62,5 +62,8 @@ Contributing
 3. Write you change
 6. Submit a Pull Request using Github
 
-License and Authors
+Contributors
 -------------------
+
+* **[@xaprb](https://github.com/xaprb)**
+
