@@ -13,7 +13,7 @@ remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
   source node['go']['url']
   owner "root"
   mode 0644
-  notifies :run, "bash[install-golang]", :immediately
+  notifies :run, resources(:bash => "install-golang"), :immediately
   not_if "/usr/local/go/bin/go version | grep #{node['go']['version']}"
 end
 
