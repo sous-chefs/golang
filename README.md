@@ -1,4 +1,4 @@
-chef-golang Cookbook
+golang Cookbook
 ====================
 
 Requirements
@@ -17,7 +17,7 @@ Tested on:
 Attributes
 ----------
 
-#### chef-golang::default
+#### golang::default
 <table>
   <tr>
     <th>Key</th>
@@ -41,15 +41,15 @@ Attributes
 
 Usage
 -----
-#### chef-golang::default
+#### golang::default
 
-Just include `chef-golang` in your node's `run_list`:
+Just include `golang` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[chef-golang]"
+    "recipe[golang]"
   ]
 }
 ```

@@ -3,8 +3,8 @@ bash "install-golang" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
-    rm -rf /usr/local/go
-    tar -C /usr/local -xzf #{node["go"]["filename"]}
+    rm -rf #{node['go']['install_dir']}/go
+    tar -C #{node['go']['install_dir']} -xzf #{node["go"]["filename"]}
   EOH
   action :nothing
 end
@@ -13,8 +13,8 @@ remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
   source node['go']['url']
   owner "root"
   mode 0644
-  notifies :run, "bash[install-golang]", :immediately
-  not_if "/usr/local/go/bin/go version | grep #{node['go']['version']}"
+  notifies :run, resources(:bash => "install-golang"), :immediately
+  not_if "#{node['go']['install_dir']}/go/bin/go version | grep #{node['go']['version']}"
 end
 
 cookbook_file "/etc/profile.d/golang.sh" do
