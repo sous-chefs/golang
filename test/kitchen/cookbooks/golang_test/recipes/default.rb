@@ -7,4 +7,4 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "chef-golang::default"
+include_recipe "golang::default"

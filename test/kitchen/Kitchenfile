@@ -6,7 +6,7 @@ platform :ubuntu do
   end
 end
 
-cookbook "chef-golang" do
+cookbook "golang" do
   configuration "default"
 
   exclude :platform => "centos"

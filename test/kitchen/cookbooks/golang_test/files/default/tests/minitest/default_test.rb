@@ -1,6 +1,6 @@
 require File.expand_path('../support/helpers', __FILE__)
 
-describe 'chef-golang::default' do
+describe 'golang::default' do
   include Helpers::Golang
 
   it 'can execute go version' do
