@@ -1,6 +1,6 @@
-# CHANGELOG for chef-golang
+# CHANGELOG for golang
 
-This file is used to list changes made in each version of chef-golang.
+This file is used to list changes made in each version of golang.
 
 ## 1.0.1:
 
@@ -8,4 +8,4 @@ This file is used to list changes made in each version of chef-golang.
 
 ## 1.0.0:
 
-* Initial release of chef-golang
+* Initial release of golang
