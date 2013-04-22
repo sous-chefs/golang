@@ -8,3 +8,6 @@ version          '1.0.1'
 
 recipe "chef-golang", "Installs go programing language."
 recipe "chef-golang::install", "Installs go programing language."
+
+supports 'debian', ">= 6.0"
+supports 'ubuntu', ">= 12.04"
