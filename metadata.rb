@@ -11,3 +11,5 @@ recipe "golang::install", "Installs go programing language."
 
 supports 'debian', ">= 6.0"
 supports 'ubuntu', ">= 12.04"
+
+depends 'git'
