@@ -17,8 +17,24 @@ remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
   not_if "#{node['go']['install_dir']}/go/bin/go version | grep #{node['go']['version']}"
 end
 
-cookbook_file "/etc/profile.d/golang.sh" do
-  source "golang.sh"
+directory node['go']['gopath'] do
+  action :create
+  recursive true
+  owner "root"
+  group "root"
+  mode 0755
+end
+
+directory node['go']['gobin'] do
+  action :create
+  recursive true
+  owner "root"
+  group "root"
+  mode 0755
+end
+
+template "/etc/profile.d/golang.sh" do
+  source "golang.sh.erb"
   owner "root"
   group "root"
   mode 0755
