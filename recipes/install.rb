@@ -1,3 +1,4 @@
+include_recipe "git"
 
 bash "install-golang" do
   cwd Chef::Config[:file_cache_path]
