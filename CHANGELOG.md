@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of golang.
 
+## 1.1.0:
+
+* Added package LWRP
+* Configurable `gopath` & `gobin`
+
 ## 1.0.2:
 
 * Lets users easily specify another install dir
