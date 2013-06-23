@@ -8,4 +8,8 @@ describe 'golang::default' do
     assert_includes(go.stdout,'1.0.3')
   end
 
+  it 'can run hello_world' do
+    shell_out!("export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bin/go test")
+  end
+
 end

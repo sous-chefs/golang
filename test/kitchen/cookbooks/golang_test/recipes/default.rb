@@ -8,3 +8,11 @@
 #
 
 include_recipe "golang::default"
+
+golang_package "launchpad.net/gocheck" do
+  action :install
+end
+
+remote_directory "/tmp/hello_world" do
+  name "hello_world"
+end
