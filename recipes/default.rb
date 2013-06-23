@@ -7,4 +7,5 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "golang::requirements"
 include_recipe "golang::install"
