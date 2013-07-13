@@ -1,3 +1,8 @@
 /metadata.json
-/test/kitchen/.kitchen
 /~
+
+.kitchen/
+.kitchen.local.yml
+
+Gemfile.lock
+Berksfile.lock
