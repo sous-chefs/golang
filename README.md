@@ -51,7 +51,7 @@ Just include `golang` in your node's `run_list`:
     <td><tt>['go']['version']</tt></td>
     <td>String</td>
     <td>Go version</td>
-    <td><tt>1.0.3</tt></td>
+    <td><tt>1.1.1</tt></td>
   </tr>
   <tr>
     <td><tt>['go']['platform']</tt></td>
