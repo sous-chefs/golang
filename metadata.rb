@@ -10,7 +10,8 @@ recipe "golang", "Installs go programing language."
 recipe "golang::install", "Installs go programing language."
 recipe "golang::requirements", "Installs requirements."
 
-supports 'debian', ">= 6.0"
-supports 'ubuntu', ">= 12.04"
+supports 'debian'
+supports 'ubuntu'
 
 depends 'git'
+
