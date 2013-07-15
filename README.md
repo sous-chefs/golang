@@ -84,6 +84,7 @@ satisfied:
 
 ## <a name="contributors"></a> Contributors
 
+* **[@akalyaev](https://github.com/akalyaev)**
 * **[@xaprb](https://github.com/xaprb)**
 * **[@crowdmatt](https://github.com/crowdmatt)**
 * **[@buth](https://github.com/buth)**
