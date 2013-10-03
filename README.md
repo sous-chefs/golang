@@ -88,4 +88,5 @@ satisfied:
 * **[@xaprb](https://github.com/xaprb)**
 * **[@crowdmatt](https://github.com/crowdmatt)**
 * **[@buth](https://github.com/buth)**
+* **[@computerlyrik](https://github.com/computerlyrik)**
 
