@@ -7,11 +7,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.1.2'
 
 recipe "golang", "Installs go programing language."
-recipe "golang::install", "Installs go programing language."
-recipe "golang::requirements", "Installs requirements."
+recipe "golang::packages", "Installs go packages and SCM requirements."
 
 supports 'debian'
 supports 'ubuntu'
-
-depends 'git'
 
