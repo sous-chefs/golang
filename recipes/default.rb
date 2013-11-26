@@ -31,7 +31,7 @@ remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
   source node['go']['url']
   owner "root"
   mode 0644
-  notifies :run, resources(:bash => "install-golang"), :immediately
+  notifies :run, 'bash[install-golang]', :immediately
   not_if "#{node['go']['install_dir']}/go/bin/go version | grep #{node['go']['version']}"
 end
 
@@ -58,7 +58,7 @@ template "/etc/profile.d/golang.sh" do
   mode 0755
 end
 
-if node[:go][:scm]
+if node['go']['scm']
   %w(git mercurial bzr).each do |scm|
     package scm
   end
