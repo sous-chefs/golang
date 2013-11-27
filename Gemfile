@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'foodcritic'
+gem 'foodcritic', '~> 3.0'
 
 group :integration do
   gem 'berkshelf', '~> 2.0.10'
