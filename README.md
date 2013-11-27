@@ -15,11 +15,6 @@ Chef cookbook for [Go programming language](http://golang.org/).
 may work on other platforms with or without modification. Please
 [report issues](/issues) any additional platforms so they can be added.
 
-### <a name="requirements-cookbooks"></a> Cookbooks
-
-This cookbook depends on the following external cookbooks:
-
-* git
 
 ## <a name="usage"></a> Usage
 
@@ -36,6 +31,25 @@ Just include `golang` in your node's `run_list`:
 }
 ```
 
+#### golang::packages
+
+To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['go']['packages']` attribute:
+
+```json
+{
+  "name":"my_node",
+  "go": {
+    "packages": [
+      "launchpad.net/gocheck"
+    ]
+  },
+  "run_list": [
+    "recipe[golang::packages]"
+  ]
+}
+```
+
+
 ## <a name="attributes"></a> Attributes
 
 #### golang::default
@@ -50,13 +64,26 @@ Just include `golang` in your node's `run_list`:
     <td><tt>['go']['version']</tt></td>
     <td>String</td>
     <td>Go version</td>
-    <td><tt>1.0.3</tt></td>
+    <td><tt>1.1.2</tt></td>
   </tr>
   <tr>
     <td><tt>['go']['platform']</tt></td>
     <td>String</td>
     <td>`amd64` or `i386`</td>
     <td><tt>amd64</tt></td>
+  </tr>
+    <tr>
+    <td><tt>['go']['scm']</tt></td>
+    <td>Boolean</td>
+    <td>install SCM dependencies `git`, `hg`, and `bzr`</td>
+    <td><tt>true</tt></td>
+  </tr>
+  </tr>
+    <tr>
+    <td><tt>['go']['packages']</tt></td>
+    <td>Array</td>
+    <td>Go packages to install when using the `golang::packages` recipe</td>
+    <td><tt>[]</tt></td>
   </tr>
 </table>
 

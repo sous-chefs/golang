@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "golang::default"
+include_recipe "golang::packages"
 
 golang_package "launchpad.net/gocheck" do
   action :install
