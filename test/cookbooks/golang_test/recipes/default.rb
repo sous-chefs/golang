@@ -7,9 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-node.override['go']['owner'] = 'vagrant'
-node.override['go']['group'] = 'vagrant'
-
 include_recipe "golang::packages"
 
 golang_package "launchpad.net/gocheck" do

@@ -13,13 +13,16 @@ describe 'golang::default' do
   end
 
   it 'sets gopath owner to vagrant' do
-    user = shell_out('stat -c "%U" /opt/go')
-    assert_equal('vagrant', user.stdout.chomp)
-  end
+    uid = File.stat('/opt/go').uid 
+    gid = File.stat('/opt/go').gid 
 
-  it 'sets gopath group to vagrant' do
-    group = shell_out('stat -c "%G" /opt/go')
-    assert_equal('vagrant', group.stdout.chomp)
+    require 'etc'
+
+    user = Etc.getpwuid(uid).name
+    group = Etc.getgrgid(gid).name
+
+    assert_equal('vagrant', user)
+    assert_equal('vagrant', group)
   end
 
 end
