@@ -7,3 +7,5 @@ default['go']['gopath'] = '/opt/go'
 default['go']['gobin'] = '/opt/go/bin'
 default['go']['scm'] = true
 default['go']['packages'] = []
+default['go']['owner'] = 'root'
+default['go']['group'] = 'root'

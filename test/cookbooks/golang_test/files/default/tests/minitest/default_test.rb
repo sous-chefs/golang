@@ -12,4 +12,14 @@ describe 'golang::default' do
     shell_out!("export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bin/go test")
   end
 
+  it 'sets gopath owner to vagrant' do
+    user = shell_out('stat -c "%U" /opt/go')
+    assert_equal('vagrant', user.stdout.chomp)
+  end
+
+  it 'sets gopath group to vagrant' do
+    group = shell_out('stat -c "%G" /opt/go')
+    assert_equal('vagrant', group.stdout.chomp)
+  end
+
 end

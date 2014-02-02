@@ -79,11 +79,23 @@ To install Go packages using node attributes, include `golang::packages` in your
     <td><tt>true</tt></td>
   </tr>
   </tr>
-    <tr>
+  <tr>
     <td><tt>['go']['packages']</tt></td>
     <td>Array</td>
     <td>Go packages to install when using the `golang::packages` recipe</td>
     <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['go']['owner']</tt></td>
+    <td>String</td>
+    <td>The user account that owns $GOPATH</td>
+    <td><tt>root</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['go']['group']</tt></td>
+    <td>String</td>
+    <td>The group that owns $GOPATH</td>
+    <td><tt>root</tt></td>
   </tr>
 </table>
 
