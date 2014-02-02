@@ -128,4 +128,5 @@ satisfied:
 * **[@crowdmatt](https://github.com/crowdmatt)**
 * **[@buth](https://github.com/buth)**
 * **[@computerlyrik](https://github.com/computerlyrik)**
+* **[@pseudomuto](https://github.com/pseudomuto)**
 
