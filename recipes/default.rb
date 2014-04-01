@@ -46,8 +46,8 @@ end
 directory node['go']['gobin'] do
   action :create
   recursive true
-  owner 'root'
-  group 'root'
+  owner node['go']['owner']
+  group node['go']['group']
   mode 0755
 end
 
