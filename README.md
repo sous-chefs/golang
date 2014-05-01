@@ -129,4 +129,8 @@ satisfied:
 * **[@buth](https://github.com/buth)**
 * **[@computerlyrik](https://github.com/computerlyrik)**
 * **[@pseudomuto](https://github.com/pseudomuto)**
+* **[@ngerakines](https://github.com/ngerakines)**
+* **[@tduffield](https://github.com/tduffield)**
+* **[@bluepojo](https://github.com/bluepojo)**
+
 
