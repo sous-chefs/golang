@@ -11,6 +11,12 @@ platforms:
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.4.box
   run_list:
     - recipe[apt]
+- name: centos-6.5
+  driver:
+    box: opscode-centos-6.5
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.5_chef-11.4.4.box
+  run_list:
+    - recipe[yum]
 
 suites:
 - name: default
