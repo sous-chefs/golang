@@ -13,7 +13,7 @@ Chef cookbook for [Go programming language](http://golang.org/).
 
 **Notes**: This cookbook has been tested on the listed platforms. It
 may work on other platforms with or without modification. Please
-[report issues](/issues) any additional platforms so they can be added.
+[report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
 
 
 ## <a name="usage"></a> Usage
