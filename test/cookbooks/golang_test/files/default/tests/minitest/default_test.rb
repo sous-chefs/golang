@@ -25,4 +25,9 @@ describe 'golang::default' do
     assert_equal('vagrant', group)
   end
 
+  it 'can execute the hello binary' do
+    go = shell_out("/opt/go/bin/hello")
+    assert_includes(go.stdout,'Hello, world.  Sqrt(2) = 1.414213562373095')
+  end
+
 end
