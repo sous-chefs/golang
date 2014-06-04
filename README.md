@@ -64,7 +64,7 @@ To install Go packages using node attributes, include `golang::packages` in your
     <td><tt>['go']['version']</tt></td>
     <td>String</td>
     <td>Go version</td>
-    <td><tt>1.2</tt></td>
+    <td><tt>1.2.2</tt></td>
   </tr>
   <tr>
     <td><tt>['go']['platform']</tt></td>
@@ -120,17 +120,3 @@ satisfied:
 3. Write you change
 4. Test it by running `rake kitchen:all`
 5. Submit a Pull Request
-
-## <a name="contributors"></a> Contributors
-
-* **[@akalyaev](https://github.com/akalyaev)**
-* **[@xaprb](https://github.com/xaprb)**
-* **[@crowdmatt](https://github.com/crowdmatt)**
-* **[@buth](https://github.com/buth)**
-* **[@computerlyrik](https://github.com/computerlyrik)**
-* **[@pseudomuto](https://github.com/pseudomuto)**
-* **[@ngerakines](https://github.com/ngerakines)**
-* **[@tduffield](https://github.com/tduffield)**
-* **[@bluepojo](https://github.com/bluepojo)**
-
-
