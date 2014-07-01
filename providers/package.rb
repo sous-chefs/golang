@@ -1,9 +1,11 @@
 action :install do
 
-  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') 
+  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
-  bash "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})" do
-    code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
+  bash "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} \
+  2> >(grep -v '(download)$' > #{tmp_file_path})" do
+    code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} \
+    2> >(grep -v '(download)$' > #{tmp_file_path})"
     action :nothing
     user node['go']['owner']
     group node['go']['group']
@@ -23,10 +25,12 @@ end
 
 action :update do
 
-  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') 
+  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
-  bash "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})" do
-    code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
+  bash "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} \
+  2> >(grep -v '(download)$' > #{tmp_file_path})" do
+    code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} \
+    2> >(grep -v '(download)$' > #{tmp_file_path})"
     action :nothing
     user node['go']['owner']
     group node['go']['group']
@@ -46,15 +50,16 @@ end
 
 action :build do
 
-  tmpdir = directory (::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') + "_BUILD") do
-    action :nothing
-    owner node['go']['owner']
-    group node['go']['group']
-    recursive true
+  tmpdir = directory (::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') + \
+    "_BUILD") do
+      action :nothing
+      owner node['go']['owner']
+      group node['go']['group']
+      recursive true
   end
 
   # create temporary directory to executing the build in
-  tmpdir.run_action(:create)
+    tmpdir.run_action(:create)
 
   b = bash "Build #{new_resource.name}" do
     code "#{node['go']['install_dir']}/go/bin/go build #{new_resource.name}"

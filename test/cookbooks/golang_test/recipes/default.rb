@@ -18,5 +18,5 @@ remote_directory "/tmp/hello_world" do
 end
 
 golang_package "code.google.com/p/go.example/hello" do
-  action [:install,:build]
+  action [:install, :build]
 end

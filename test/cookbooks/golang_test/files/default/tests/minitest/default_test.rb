@@ -5,7 +5,7 @@ describe 'golang::default' do
 
   it 'can execute go version' do
     go = shell_out("/usr/local/go/bin/go version")
-    assert_includes(go.stdout,'1.2')
+    assert_includes(go.stdout, '1.2')
   end
 
   it 'can run hello_world' do
@@ -13,8 +13,8 @@ describe 'golang::default' do
   end
 
   it 'sets gopath owner to vagrant' do
-    uid = File.stat('/opt/go').uid 
-    gid = File.stat('/opt/go').gid 
+    uid = File.stat('/opt/go').uid
+    gid = File.stat('/opt/go').gid
 
     require 'etc'
 
@@ -27,7 +27,7 @@ describe 'golang::default' do
 
   it 'can execute the hello binary' do
     go = shell_out("/opt/go/bin/hello")
-    assert_includes(go.stdout,'Hello, world.  Sqrt(2) = 1.414213562373095')
+    assert_includes(go.stdout, 'Hello, world.  Sqrt(2) = 1.414213562373095')
   end
 
 end

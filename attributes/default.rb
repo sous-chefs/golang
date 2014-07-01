@@ -1,6 +1,7 @@
 default['go']['version'] = '1.2.2'
 default['go']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
-default['go']['filename'] = "go#{node['go']['version']}.#{node['os']}-#{node['go']['platform']}.tar.gz"
+default['go']['filename'] = "go#{node['go']['version']}.#{node['os']}-\
+#{node['go']['platform']}.tar.gz"
 default['go']['url'] = "http://golang.org/dl/#{node['go']['filename']}"
 default['go']['install_dir'] = '/usr/local'
 default['go']['gopath'] = '/opt/go'
