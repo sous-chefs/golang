@@ -21,33 +21,34 @@ bash "install-golang" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
-    rm -rf #{node['go']['install_dir']}/go
-    tar -C #{node['go']['install_dir']} -xzf #{node["go"]["filename"]}
+    rm -rf #{node['golang']['install_dir']}/go
+    tar -C #{node['golang']['install_dir']} -xzf #{node["golang"]["filename"]}
   EOH
   action :nothing
 end
 
-remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
-  source node['go']['url']
+remote_file File.join(Chef::Config[:file_cache_path], node['golang']['filename']) do
+  source node['golang']['url']
   owner 'root'
   mode 0644
   notifies :run, 'bash[install-golang]', :immediately
-  not_if "#{node['go']['install_dir']}/go/bin/go version | grep \"go#{node['go']['version']} \""
+  not_if \
+    "#{node['golang']['install_dir']}/go/bin/go version | grep \"go#{node['golang']['version']} \""
 end
 
-directory node['go']['gopath'] do
+directory node['golang']['gopath'] do
   action :create
   recursive true
-  owner node['go']['owner']
-  group node['go']['group']
+  owner node['golang']['owner']
+  group node['golang']['group']
   mode 0755
 end
 
-directory node['go']['gobin'] do
+directory node['golang']['gobin'] do
   action :create
   recursive true
-  owner node['go']['owner']
-  group node['go']['group']
+  owner node['golang']['owner']
+  group node['golang']['group']
   mode 0755
 end
 
@@ -58,7 +59,7 @@ template "/etc/profile.d/golang.sh" do
   mode 0755
 end
 
-if node['go']['scm']
+if node['golang']['scm']
   %w(git mercurial bzr).each do |scm|
     package scm
   end

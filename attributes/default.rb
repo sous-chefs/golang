@@ -1,11 +1,12 @@
-default['go']['version'] = '1.2.2'
-default['go']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
-default['go']['filename'] = "go#{node['go']['version']}.#{node['os']}-#{node['go']['platform']}.tar.gz"
-default['go']['url'] = "http://golang.org/dl/#{node['go']['filename']}"
-default['go']['install_dir'] = '/usr/local'
-default['go']['gopath'] = '/opt/go'
-default['go']['gobin'] = '/opt/go/bin'
-default['go']['scm'] = true
-default['go']['packages'] = []
-default['go']['owner'] = 'root'
-default['go']['group'] = 'root'
+default['golang']['version'] = '1.2.2'
+default['golang']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
+default['golang']['filename'] = "go#{node['golang']['version']}.#{node['os']}-\
+#{node['golang']['platform']}.tar.gz"
+default['golang']['url'] = "http://golang.org/dl/#{node['golang']['filename']}"
+default['golang']['install_dir'] = '/usr/local'
+default['golang']['gopath'] = '/opt/go'
+default['golang']['gobin'] = '/opt/go/bin'
+default['golang']['scm'] = true
+default['golang']['packages'] = []
+default['golang']['owner'] = 'root'
+default['golang']['group'] = 'root'
