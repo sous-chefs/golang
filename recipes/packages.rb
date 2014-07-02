@@ -19,6 +19,6 @@
 
 include_recipe 'golang'
 
-node['go']['packages'].each do |package|
+node['golang']['packages'].each do |package|
   golang_package package
 end

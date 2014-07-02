@@ -13,7 +13,7 @@ Chef cookbook for [Go programming language](http://golang.org/).
 
 **Notes**: This cookbook has been tested on the listed platforms. It
 may work on other platforms with or without modification. Please
-[report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
+[report issues](https://github.com/daptiv/chef-golang/issues) any additional platforms so they can be added.
 
 
 ## <a name="usage"></a> Usage
@@ -33,12 +33,12 @@ Just include `golang` in your node's `run_list`:
 
 #### golang::packages
 
-To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['go']['packages']` attribute:
+To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['golang']['packages']` attribute:
 
 ```json
 {
   "name":"my_node",
-  "go": {
+  "golang": {
     "packages": [
       "launchpad.net/gocheck"
     ]
@@ -61,38 +61,38 @@ To install Go packages using node attributes, include `golang::packages` in your
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['go']['version']</tt></td>
+    <td><tt>['golang']['version']</tt></td>
     <td>String</td>
     <td>Go version</td>
     <td><tt>1.2.2</tt></td>
   </tr>
   <tr>
-    <td><tt>['go']['platform']</tt></td>
+    <td><tt>['golang']['platform']</tt></td>
     <td>String</td>
     <td>`amd64` or `i386`</td>
     <td><tt>amd64</tt></td>
   </tr>
     <tr>
-    <td><tt>['go']['scm']</tt></td>
+    <td><tt>['golang']['scm']</tt></td>
     <td>Boolean</td>
     <td>install SCM dependencies `git`, `hg`, and `bzr`</td>
     <td><tt>true</tt></td>
   </tr>
   </tr>
   <tr>
-    <td><tt>['go']['packages']</tt></td>
+    <td><tt>['golang']['packages']</tt></td>
     <td>Array</td>
     <td>Go packages to install when using the `golang::packages` recipe</td>
     <td><tt>[]</tt></td>
   </tr>
   <tr>
-    <td><tt>['go']['owner']</tt></td>
+    <td><tt>['golang']['owner']</tt></td>
     <td>String</td>
     <td>The user account that owns $GOPATH</td>
     <td><tt>root</tt></td>
   </tr>
   <tr>
-    <td><tt>['go']['group']</tt></td>
+    <td><tt>['golang']['group']</tt></td>
     <td>String</td>
     <td>The group that owns $GOPATH</td>
     <td><tt>root</tt></td>

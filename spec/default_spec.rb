@@ -5,7 +5,7 @@ describe 'golang::default' do
   let(:chef_run) do
     ChefSpec::Runner.new do |node|
       stub_command("/usr/local/go/bin/go version | grep \"go1.2.2 \"").and_return('')
-      node.set['go']['filename'] = 'testfile.tar.gz'
+      node.set['golang']['filename'] = 'testfile.tar.gz'
     end.converge(described_recipe)
   end
 
