@@ -21,7 +21,7 @@ platforms:
 suites:
 - name: default
   run_list:
-    - recipe[chef_golang_test::default]
+    - recipe[golang::default]
     - recipe[minitest-handler]
   attributes: 
     go: 
