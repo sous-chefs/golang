@@ -97,6 +97,12 @@ To install Go packages using node attributes, include `golang::packages` in your
     <td>The group that owns $GOPATH</td>
     <td><tt>root</tt></td>
   </tr>
+  <tr>
+    <td><tt>['go']['mode']</tt></td>
+    <td>String</td>
+    <td>The mode of $GOPATH</td>
+    <td><tt>0755</tt></td>
+  </tr>
 </table>
 
 ## <a name="testing"></a> Testing
