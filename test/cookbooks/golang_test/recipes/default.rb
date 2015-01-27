@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-user node['go']['owner']
-
 include_recipe "golang::packages"
 
 golang_package "launchpad.net/gocheck" do

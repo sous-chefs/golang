@@ -12,7 +12,7 @@ describe 'golang::default' do
     shell_out!("export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bin/go test")
   end
 
-  it 'sets gopath owner to test-user' do
+  it 'sets gopath owner to vagrant' do
     uid = File.stat('/opt/go').uid 
     gid = File.stat('/opt/go').gid 
 
@@ -21,8 +21,8 @@ describe 'golang::default' do
     user = Etc.getpwuid(uid).name
     group = Etc.getgrgid(gid).name
 
-    assert_equal('test-user', user)
-    assert_equal('test-user', group)
+    assert_equal('vagrant', user)
+    assert_equal('vagrant', group)
   end
 
   it 'can execute the hello binary' do

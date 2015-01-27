@@ -2,11 +2,6 @@ action :install do
 
   tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') 
 
-  file tmp_file_path do
-    owner node['go']['owner']
-    group node['go']['group']
-  end.run_action(:create)
-
   bash "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})" do
     code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
     action :nothing
@@ -29,11 +24,6 @@ end
 action :update do
 
   tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') 
-
-  file tmp_file_path do
-    owner node['go']['owner']
-    group node['go']['group']
-  end.run_action(:create)
 
   bash "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})" do
     code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
