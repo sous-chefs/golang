@@ -5,7 +5,7 @@ describe 'golang::default' do
 
   it 'can execute go version' do
     go = shell_out("/usr/local/go/bin/go version")
-    assert_includes(go.stdout,'1.3')
+    assert_includes(go.stdout,'1.4')
   end
 
   it 'can run hello_world' do
@@ -13,8 +13,8 @@ describe 'golang::default' do
   end
 
   it 'sets gopath owner to vagrant' do
-    uid = File.stat('/opt/go').uid 
-    gid = File.stat('/opt/go').gid 
+    uid = File.stat('/opt/go').uid
+    gid = File.stat('/opt/go').gid
 
     require 'etc'
 
