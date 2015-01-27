@@ -40,7 +40,7 @@ directory node['go']['gopath'] do
   recursive true
   owner node['go']['owner']
   group node['go']['group']
-  mode 0755
+  mode node['go']['mode']
 end
 
 directory node['go']['gobin'] do
@@ -48,7 +48,7 @@ directory node['go']['gobin'] do
   recursive true
   owner node['go']['owner']
   group node['go']['group']
-  mode 0755
+  mode node['go']['mode']
 end
 
 template "/etc/profile.d/golang.sh" do
