@@ -25,5 +25,5 @@ suites:
     - recipe[minitest-handler]
   attributes: 
     go: 
-      owner: 'vagrant'
-      group: 'vagrant'
+      owner: 'test-user'
+      group: 'test-user'
