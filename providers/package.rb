@@ -1,8 +1,8 @@
 action :install do
 
-  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') 
+  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
-  bash "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})" do
+  bash "Installing package #{new_resource.name}" do
     code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
     action :nothing
     user node['go']['owner']
@@ -23,9 +23,9 @@ end
 
 action :update do
 
-  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') 
+  tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
-  bash "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})" do
+  bash "Updating package #{new_resource.name}" do
     code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
     action :nothing
     user node['go']['owner']
@@ -56,7 +56,7 @@ action :build do
   # create temporary directory to executing the build in
   tmpdir.run_action(:create)
 
-  b = bash "Build #{new_resource.name}" do
+  b = bash "Build package #{new_resource.name}" do
     code "#{node['go']['install_dir']}/go/bin/go build #{new_resource.name}"
     action :nothing
     cwd tmpdir.name
@@ -72,7 +72,7 @@ action :build do
   b.run_action(:run)
 
   # remove temporary directory
-  tmpdir.run_action(:delete)
+  # tmpdir.run_action(:delete)
 
   new_resource.updated_by_last_action(b.updated?)
 end

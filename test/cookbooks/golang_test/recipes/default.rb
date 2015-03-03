@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: chef_golang_test
+# Cookbook Name:: golang_test
 # Recipe:: default
 #
 # Copyright 2013, YOUR_COMPANY_NAME

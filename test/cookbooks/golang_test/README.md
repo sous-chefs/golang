@@ -1,4 +1,4 @@
-chef_golang_test Cookbook
+golang_test Cookbook
 =========================
 TODO: Enter the cookbook description here.
 
@@ -11,14 +11,14 @@ TODO: List your cookbook requirements. Be sure to include any requirements this 
 
 e.g.
 #### packages
-- `toaster` - chef_golang_test needs toaster to brown your bagel.
+- `toaster` - golang_test needs toaster to brown your bagel.
 
 Attributes
 ----------
 TODO: List you cookbook attributes here.
 
 e.g.
-#### chef_golang_test::default
+#### golang_test::default
 <table>
   <tr>
     <th>Key</th>
@@ -27,7 +27,7 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['chef_golang_test']['bacon']</tt></td>
+    <td><tt>['golang_test']['bacon']</tt></td>
     <td>Boolean</td>
     <td>whether to include bacon</td>
     <td><tt>true</tt></td>
@@ -36,17 +36,17 @@ e.g.
 
 Usage
 -----
-#### chef_golang_test::default
+#### golang_test::default
 TODO: Write usage instructions for each cookbook.
 
 e.g.
-Just include `chef_golang_test` in your node's `run_list`:
+Just include `golang_test` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[chef_golang_test]"
+    "recipe[golang_test]"
   ]
 }
 ```

@@ -1,10 +1,10 @@
-# CHANGELOG for chef_golang_test
+# CHANGELOG for golang_test
 
-This file is used to list changes made in each version of chef_golang_test.
+This file is used to list changes made in each version of golang_test.
 
 ## 0.1.0:
 
-* Initial release of chef_golang_test
+* Initial release of golang_test
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
