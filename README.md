@@ -8,7 +8,7 @@ Chef cookbook for [Go programming language](http://golang.org/).
 
 ### <a name="requirements-platform"></a> Platform
 
-* Ubuntu (10.04/11.04/12.04/13.04)
+* Ubuntu (12.04/13.04/14.10)
 * Debian (6.0)
 
 **Notes**: This cookbook has been tested on the listed platforms. It
