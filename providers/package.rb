@@ -9,7 +9,10 @@ action :install do
     group node['go']['group']
     environment({
       'GOPATH' => node['go']['gopath'],
-      'GOBIN' => node['go']['gobin']
+      'GOBIN' => node['go']['gobin'],
+      'http_proxy' => ENV['http_proxy'],
+      'https_proxy' => ENV['https_proxy'],
+      'no_proxy' => ENV['no_proxy']
     })
   end.run_action(:run)
 
@@ -32,7 +35,10 @@ action :update do
     group node['go']['group']
     environment({
       'GOPATH' => node['go']['gopath'],
-      'GOBIN' => node['go']['gobin']
+      'GOBIN' => node['go']['gobin'],
+      'http_proxy' => ENV['http_proxy'],
+      'https_proxy' => ENV['https_proxy'],
+      'no_proxy' => ENV['no_proxy']
     })
   end.run_action(:run)
 
@@ -64,7 +70,10 @@ action :build do
     group node['go']['group']
     environment({
       'GOPATH' => node['go']['gopath'],
-      'GOBIN' => node['go']['gobin']
+      'GOBIN' => node['go']['gobin'],
+      'http_proxy' => ENV['http_proxy'],
+      'https_proxy' => ENV['https_proxy'],
+      'no_proxy' => ENV['no_proxy']
     })
   end
 

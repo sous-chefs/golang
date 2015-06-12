@@ -10,3 +10,9 @@ default['go']['packages'] = []
 default['go']['owner'] = 'root'
 default['go']['group'] = 'root'
 default['go']['mode'] = 0755
+
+# set proxy settings for apt cacher if needed
+proxy = URI(ENV['https_proxy'])
+default['apt']['cacher_ipaddress'] = proxy.host
+default['apt']['cacher_port'] = proxy.port
+default['apt']['cacher_ssl_support'] = true

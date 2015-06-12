@@ -59,6 +59,9 @@ template "/etc/profile.d/golang.sh" do
 end
 
 if node['go']['scm']
+  if node['platform_family'] == 'debian' && ENV['https_proxy']
+    include_recipe 'apt::cacher-client'
+  end
   %w(git mercurial bzr).each do |scm|
     package scm
   end
