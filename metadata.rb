@@ -1,4 +1,4 @@
-name             'golang'
+name             'chef-golang'
 maintainer       'Alexander Rozhnov'
 maintainer_email 'gnox73@gmail.com'
 license          'Apache 2.0'
