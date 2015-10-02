@@ -17,18 +17,22 @@
 # under the License.
 #
 
+go_platform = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
+go_filename = "go#{node['go']['version']}.#{node['os']}-#{go_platform}.tar.gz"
+go_url = "http://golang.org/dl/#{go_filename}"
+
 bash "install-golang" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
     rm -rf #{node['go']['install_dir']}/go
-    tar -C #{node['go']['install_dir']} -xzf #{node["go"]["filename"]}
+    tar -C #{node['go']['install_dir']} -xzf #{go_filename}
   EOH
   action :nothing
 end
 
-remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
-  source node['go']['url']
+remote_file File.join(Chef::Config[:file_cache_path], go_filename) do
+  source go_url
   owner 'root'
   mode 0644
   notifies :run, 'bash[install-golang]', :immediately
