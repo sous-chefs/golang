@@ -70,6 +70,7 @@ Key | Type | Description | Default
 `['go']['arch']` | String | Build go for which architecture | `arm`
 `['go']['arm']` | String | Build go for which arm version | `6`
 `['go']['source_method']` | String | Choose which install script should be used | `all.bash`
+`['go']['bootstrap_url']` | String | Go bootstrap package url to install go > 1.5 from source | `http://dave.cheney.net/paste/go-linux-arm-bootstrap-c788a8e.tbz`
 
 ## Testing
 

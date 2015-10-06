@@ -21,7 +21,7 @@ node.default['go']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : '
 node.default['go']['filename'] = "go#{node['go']['version']}.#{node['os']}-#{node['go']['platform']}.tar.gz"
 node.default['go']['url'] = "http://golang.org/dl/#{node['go']['filename']}"
 
-bash "install-golang" do
+bash 'install-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
@@ -32,7 +32,9 @@ bash "install-golang" do
   action :nothing
 end
 
-bash "build-golang" do
+bootstrap_root = "#{node['go']['install_dir']}/go-bootstrap/go-#{node['go']['os']}-#{node['go']['arch']}-bootstrap"
+
+bash 'build-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
@@ -44,27 +46,18 @@ bash "build-golang" do
   EOH
   environment ({
     'GOROOT' => "#{node['go']['install_dir']}/go",
-    'GOBIN'  => '$GOROOT/bin',
-    'GOOS'   => node['go']['os'],
+    'GOBIN' => '$GOROOT/bin',
+    'GOOS' => node['go']['os'],
     'GOARCH' => node['go']['arch'],
-    'GOARM'  => node['go']['arm']
+    'GOROOT_BOOTSTRAP' => node['go']['version'].to_f >= 1.5 ? bootstrap_root : '',
+    'GOARM' => node['go']['arm']
   })
   only_if { node['go']['from_source'] }
   action :nothing
 end
 
 if node['go']['from_source']
-  case node["platform"]
-  when 'debian', 'ubuntu'
-    packages = %w(build-essential)
-  when 'redhat', 'centos', 'fedora'
-    packages = %w(gcc glibc-devel)
-  end
-  packages.each do |dev_package|
-    package dev_package do
-      action :install
-    end
-  end
+  include_recipe 'build-essential::default'
 end
 
 remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
@@ -92,8 +85,8 @@ directory node['go']['gobin'] do
   mode node['go']['mode']
 end
 
-template "/etc/profile.d/golang.sh" do
-  source "golang.sh.erb"
+template '/etc/profile.d/golang.sh' do
+  source 'golang.sh.erb'
   owner 'root'
   group 'root'
   mode 0755
