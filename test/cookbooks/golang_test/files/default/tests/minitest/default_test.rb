@@ -5,7 +5,7 @@ describe 'golang::default' do
 
   it 'can execute go version' do
     go = shell_out("/usr/local/go/bin/go version")
-    assert_includes(go.stdout,'1.4')
+    assert_includes(go.stdout,'1.5')
   end
 
   it 'can run hello_world' do
