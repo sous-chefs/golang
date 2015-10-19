@@ -42,10 +42,10 @@ GEM
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.8)
-    foodcritic (4.0.0)
+    foodcritic (5.0.0)
       erubis
       gherkin (~> 2.11)
-      nokogiri (~> 1.5)
+      nokogiri (>= 1.5, < 2.0)
       rake
       rufus-lru (~> 1.0)
       treetop (~> 1.4)
@@ -63,7 +63,7 @@ GEM
       mixlib-log
     mixlib-log (1.6.0)
     mixlib-shellout (2.0.1)
-    multi_json (1.11.0)
+    multi_json (1.11.2)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
@@ -112,7 +112,7 @@ GEM
     thor (0.19.1)
     timers (4.0.1)
       hitimes
-    treetop (1.6.2)
+    treetop (1.6.3)
       polyglot (~> 0.3)
     varia_model (0.4.0)
       buff-extensions (~> 1.0)
@@ -124,7 +124,7 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf (~> 3.2.0)
-  foodcritic (~> 4.0)
+  foodcritic (~> 5.0)
   kitchen-vagrant (~> 0.18.0)
   rake
   test-kitchen (~> 1.4.0)
