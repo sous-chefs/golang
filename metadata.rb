@@ -12,3 +12,5 @@ recipe "golang::packages", "Installs go packages and SCM requirements."
 supports 'debian'
 supports 'ubuntu'
 supports 'centos'
+
+depends  'apt'
