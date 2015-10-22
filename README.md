@@ -10,6 +10,7 @@ Chef cookbook for [Go programming language](http://golang.org/).
 
 * Ubuntu (12.04/13.04/14.10)
 * Debian (6.0)
+* CentOS (6.5)
 
 **Notes**: This cookbook has been tested on the listed platforms. It
 may work on other platforms with or without modification. Please
