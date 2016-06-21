@@ -1,4 +1,6 @@
 name             'golang'
+source_url       'https://github.com/NOX73/chef-golang'
+issues_url       'https://github.com/NOX73/chef-golang/issues'
 maintainer       'Alexander Rozhnov'
 maintainer_email 'gnox73@gmail.com'
 license          'Apache 2.0'
