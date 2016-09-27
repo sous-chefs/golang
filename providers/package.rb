@@ -5,26 +5,26 @@ action :install do
   tmp_file_path = ::File.join tmp_dir_path, new_resource.name.gsub(/\//, '-')
 
   directory tmp_dir_path do
-    user node['go']['owner']
-    group node['go']['group']
+    user node['golang']['owner']
+    group node['golang']['group']
     mode '0775'
     action :nothing
   end.run_action(:create)
 
   bash "Installing package #{new_resource.name}" do
-    code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' | tee #{tmp_file_path})"
+    code "#{node['golang']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' | tee #{tmp_file_path})"
     action :nothing
-    user node['go']['owner']
-    group node['go']['group']
+    user node['golang']['owner']
+    group node['golang']['group']
     environment(
-      'GOPATH' => node['go']['gopath'],
-      'GOBIN' => node['go']['gobin']
+      'GOPATH' => node['golang']['gopath'],
+      'GOBIN' => node['golang']['gobin']
     )
   end.run_action(:run)
 
   f = file tmp_file_path do
-    user node['go']['owner']
-    group node['go']['group']
+    user node['golang']['owner']
+    group node['golang']['group']
     content ''
   end
   f.run_action(:create)
@@ -34,13 +34,13 @@ action :update do
   tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
   bash "Updating package #{new_resource.name}" do
-    code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' | tee #{tmp_file_path})"
+    code "#{node['golang']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' | tee #{tmp_file_path})"
     action :nothing
-    user node['go']['owner']
-    group node['go']['group']
+    user node['golang']['owner']
+    group node['golang']['group']
     environment(
-      'GOPATH' => node['go']['gopath'],
-      'GOBIN' => node['go']['gobin']
+      'GOPATH' => node['golang']['gopath'],
+      'GOBIN' => node['golang']['gobin']
     )
   end.run_action(:run)
 
@@ -53,8 +53,8 @@ end
 action :build do
   tmpdir = directory (::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') + '_BUILD') do
     action :nothing
-    owner node['go']['owner']
-    group node['go']['group']
+    owner node['golang']['owner']
+    group node['golang']['group']
     recursive true
   end
 
@@ -62,14 +62,14 @@ action :build do
   tmpdir.run_action(:create)
 
   b = bash "Build package #{new_resource.name}" do
-    code "#{node['go']['install_dir']}/go/bin/go build #{new_resource.name}"
+    code "#{node['golang']['install_dir']}/go/bin/go build #{new_resource.name}"
     action :nothing
     cwd tmpdir.name
-    user node['go']['owner']
-    group node['go']['group']
+    user node['golang']['owner']
+    group node['golang']['group']
     environment(
-      'GOPATH' => node['go']['gopath'],
-      'GOBIN' => node['go']['gobin']
+      'GOPATH' => node['golang']['gopath'],
+      'GOBIN' => node['golang']['gobin']
     )
   end
 
