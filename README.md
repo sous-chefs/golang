@@ -64,7 +64,7 @@ To install Go packages using node attributes, include `golang::packages` in your
     <td><tt>['go']['version']</tt></td>
     <td>String</td>
     <td>Go version</td>
-    <td><tt>1.4</tt></td>
+    <td><tt>1.5</tt></td>
   </tr>
   <tr>
     <td><tt>['go']['platform']</tt></td>
