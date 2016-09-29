@@ -58,18 +58,18 @@ To install Go packages using node attributes, include `golang::packages` in your
 
 Key | Type | Description | Default
 --- | ---- | ----------- | -------
-['go']['version'] | String | Go version | `1.5`
-['go']['platform'] | String | `amd64` or `i386` | `amd64`
-['go']['scm'] | Boolean | install SCM dependencies `git`, `hg`, and `bzr` | `true`
-['go']['packages'] | Array | Go packages to install when using the `golang::packages` recipe | `[]`
-['go']['owner'] | String | The user account that owns $GOPATH | `root`
-['go']['group'] | String | The group that owns $GOPATH | `root`
-['go']['mode'] | String | The mode of $GOPATH | `0755`
-['go']['from_source'] | Boolean | Install go from source | `false`
-['go']['os'] | String | Build go for which operating system | `linux`
-['go']['arch'] | String | Build go for which architecture | `arm`
-['go']['arm'] | String | Build go for which arm version | `6`
-['go']['source_method'] | String | Choose which install script should be used | `all.bash`
+`['go']['version']` | String | Go version | `1.5`
+`['go']['platform']` | String | `amd64` or `i386` | `amd64`
+`['go']['scm']` | Boolean | install SCM dependencies `git`, `hg`, and `bzr` | `true`
+`['go']['packages']` | Array | Go packages to install when using the `golang::packages` recipe | `[]`
+`['go']['owner']` | String | The user account that owns $GOPATH | `root`
+`['go']['group']` | String | The group that owns $GOPATH | `root`
+`['go']['mode']` | String | The mode of $GOPATH | `0755`
+`['go']['from_source']` | Boolean | Install go from source | `false`
+`['go']['os']` | String | Build go for which operating system | `linux`
+`['go']['arch']` | String | Build go for which architecture | `arm`
+`['go']['arm']` | String | Build go for which arm version | `6`
+`['go']['source_method']` | String | Choose which install script should be used | `all.bash`
 
 ## Testing
 
