@@ -2,6 +2,31 @@
 
 This file is used to list changes made in each version of golang.
 
+## 1.7.1
+
+* Create a temporary directory 
+
+## 1.7.0
+
+* Golang 1.5
+
+## 1.6.2
+
+* Ability to install from source
+
+## 1.6.0
+
+* Removed support for Ruby 1.9.3
+
+## 1.5.1
+
+* Fix testing with Vagrant, Test-Kitchen
+* Golang 1.4
+
+## 1.5.0
+
+* Golang 1.3
+
 ## 1.4.0:
 
 * Add build action to LWRP
