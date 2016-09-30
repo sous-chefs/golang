@@ -13,7 +13,7 @@ action :install do
   end.run_action(:create)
 
   bash "Installing package #{new_resource.name}" do
-    code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
+    code "#{node['go']['install_dir']}/go/bin/go get -v #{new_resource.name} 2> >(grep -v '(download)$' | tee #{tmp_file_path})"
     action :nothing
     user node['go']['owner']
     group node['go']['group']
@@ -38,7 +38,7 @@ action :update do
   tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
   bash "Updating package #{new_resource.name}" do
-    code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' > #{tmp_file_path})"
+    code "#{node['go']['install_dir']}/go/bin/go get -v -u #{new_resource.name} 2> >(grep -v '(download)$' | tee #{tmp_file_path})"
     action :nothing
     user node['go']['owner']
     group node['go']['group']
