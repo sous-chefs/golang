@@ -6,3 +6,5 @@
 
 Gemfile.lock
 Berksfile.lock
+
+.DS_Store
