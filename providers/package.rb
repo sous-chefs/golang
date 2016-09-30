@@ -1,3 +1,5 @@
+use_inline_resources
+
 action :install do
 
   tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
