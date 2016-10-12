@@ -1,11 +1,12 @@
 require File.expand_path('../support/helpers', __FILE__)
+chef_data = JSON.parse(IO.read("/tmp/kitchen/dna.json"))
 
 describe 'golang::default' do
   include Helpers::Golang
 
   it 'can execute go version' do
     go = shell_out("/usr/local/go/bin/go version")
-    assert_includes(go.stdout,'1.5')
+    assert_includes(go.stdout, chef_data.fetch("go").fetch("version"))
   end
 
   it 'can run hello_world' do
