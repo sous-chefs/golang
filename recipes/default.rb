@@ -94,9 +94,9 @@ end
 
 template "/etc/profile.d/golang.sh" do
   source "golang.sh.erb"
-  owner 'root'
-  group 'root'
-  mode 0755
+  owner node['go']['owner']
+  group node['go']['group']
+  mode node['go']['mode']
 end
 
 if node['go']['scm']
