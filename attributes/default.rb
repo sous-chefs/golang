@@ -7,7 +7,7 @@ if node['go']['from_source']
   default['go']['os'] = 'linux'
   default['go']['arch'] = 'arm'
   default['go']['arm'] = '6'
-  default['go']['source_method'] = "all.bash"
+  default['go']['source_method'] = 'all.bash'
 end
 default['go']['url'] = "http://golang.org/dl/#{node['go']['filename']}"
 default['go']['install_dir'] = '/usr/local'
@@ -17,4 +17,4 @@ default['go']['scm'] = true
 default['go']['packages'] = []
 default['go']['owner'] = 'root'
 default['go']['group'] = 'root'
-default['go']['mode'] = 0755
+default['go']['mode'] = 0o755

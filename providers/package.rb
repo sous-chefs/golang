@@ -1,7 +1,6 @@
 use_inline_resources
 
 action :install do
-
   tmp_dir_path = ::File.join Chef::Config[:file_cache_path], 'golang'
   tmp_file_path = ::File.join tmp_dir_path, new_resource.name.gsub(/\//, '-')
 
@@ -17,10 +16,10 @@ action :install do
     action :nothing
     user node['go']['owner']
     group node['go']['group']
-    environment({
+    environment(
       'GOPATH' => node['go']['gopath'],
       'GOBIN' => node['go']['gobin']
-    })
+    )
   end.run_action(:run)
 
   f = file tmp_file_path do
@@ -29,12 +28,9 @@ action :install do
     content ''
   end
   f.run_action(:create)
-
-  new_resource.updated_by_last_action(f.updated?)
 end
 
 action :update do
-
   tmp_file_path = ::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-')
 
   bash "Updating package #{new_resource.name}" do
@@ -42,23 +38,20 @@ action :update do
     action :nothing
     user node['go']['owner']
     group node['go']['group']
-    environment({
+    environment(
       'GOPATH' => node['go']['gopath'],
       'GOBIN' => node['go']['gobin']
-    })
+    )
   end.run_action(:run)
 
   f = file tmp_file_path do
     content ''
   end
   f.run_action(:create)
-
-  new_resource.updated_by_last_action(f.updated?)
 end
 
 action :build do
-
-  tmpdir = directory (::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') + "_BUILD") do
+  tmpdir = directory (::File.join Chef::Config[:file_cache_path], new_resource.name.gsub(/\//, '-') + '_BUILD') do
     action :nothing
     owner node['go']['owner']
     group node['go']['group']
@@ -74,10 +67,10 @@ action :build do
     cwd tmpdir.name
     user node['go']['owner']
     group node['go']['group']
-    environment({
+    environment(
       'GOPATH' => node['go']['gopath'],
       'GOBIN' => node['go']['gobin']
-    })
+    )
   end
 
   # execute the build
@@ -85,6 +78,4 @@ action :build do
 
   # remove temporary directory
   # tmpdir.run_action(:delete)
-
-  new_resource.updated_by_last_action(b.updated?)
 end

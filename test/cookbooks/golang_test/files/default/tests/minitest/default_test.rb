@@ -4,12 +4,12 @@ describe 'golang::default' do
   include Helpers::Golang
 
   it 'can execute go version' do
-    go = shell_out("/usr/local/go/bin/go version")
-    assert_includes(go.stdout,'1.5')
+    go = shell_out('/usr/local/go/bin/go version')
+    assert_includes(go.stdout, '1.5')
   end
 
   it 'can run hello_world' do
-    shell_out!("export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bin/go test")
+    shell_out!('export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bin/go test')
   end
 
   it 'sets gopath owner to vagrant' do
@@ -26,8 +26,7 @@ describe 'golang::default' do
   end
 
   it 'can execute the hello binary' do
-    go = shell_out("/opt/go/bin/hello")
-    assert_includes(go.stdout,'Hello, world.  Sqrt(2) = 1.414213562373095')
+    go = shell_out('/opt/go/bin/hello')
+    assert_includes(go.stdout, 'Hello, world.  Sqrt(2) = 1.414213562373095')
   end
-
 end
