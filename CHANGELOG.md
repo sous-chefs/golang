@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of golang.
 
+## 1.7.2
+
+* Better chef12,13 support
+* Ruby 2.3
+* Update gems, lint
+
 ## 1.7.1
 
 * Create a temporary directory 
