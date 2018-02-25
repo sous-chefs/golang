@@ -1,28 +1,26 @@
 [![Build Status](https://travis-ci.org/NOX73/chef-golang.svg?branch=master)](https://travis-ci.org/NOX73/chef-golang)
 [![Cookbook Version](https://img.shields.io/cookbook/v/golang.svg?style=flat)](https://supermarket.chef.io/cookbooks/golang)
 
-# golang (Chef cookbook for Go)
+# chef-golang (Chef cookbook Go)
 
 ## Description
 
-Chef cookbook for [Go programming language](http://golang.org/).
+Chef cookbook for the [Go programming language](http://golang.org/).
 
 ##  Requirements
 
 ### Platform
 
-* Ubuntu (12.04/13.04/14.10)
-* Debian (6.0)
-* CentOS (6.5)
+* Ubuntu (16.04)
+* Debian (8)
+* CentOS (6.9)
 
-**Notes**: This cookbook has been tested on the listed platforms. It
-may work on other platforms with or without modification. Please
-[report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
+**Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification. Please [report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
 
 
 ## Usage
 
-#### golang::default
+#### chef-golang::default
 
 Just include `golang` in your node's `run_list`:
 
@@ -30,12 +28,12 @@ Just include `golang` in your node's `run_list`:
 {
   "name":"my_node",
   "run_list": [
-    "recipe[golang]"
+    "recipe[chef-golang]"
   ]
 }
 ```
 
-#### golang::packages
+#### chef-golang::packages
 
 To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['golang']['packages']` attribute:
 
@@ -56,7 +54,7 @@ To install Go packages using node attributes, include `golang::packages` in your
 
 ## Attributes
 
-#### golang::default
+#### chef-golang::default
 
 Key | Type | Description | Default
 --- | ---- | ----------- | -------
@@ -86,11 +84,3 @@ satisfied:
 * [Vagrant](http://vagrantup.com/) (>= 1.1.0)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant Berkshelf Plugin](http://rubygems.org/gems/vagrant-berkshelf)
-
-## Contributing
-
-1. Fork the repository
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Test it by running `rake kitchen:all`
-5. Submit a Pull Request
