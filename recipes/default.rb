@@ -17,18 +17,18 @@
 # under the License.
 #
 
-node.default['go']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
-node.default['go']['filename'] = "go#{node['go']['version']}.#{node['os']}-#{node['go']['platform']}.tar.gz"
-node.default['go']['url'] = "http://golang.org/dl/#{node['go']['filename']}"
+node.default['golang']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
+node.default['golang']['filename'] = "go#{node['golang']['version']}.#{node['os']}-#{node['golang']['platform']}.tar.gz"
+node.default['golang']['url'] = "http://golang.org/dl/#{node['golang']['filename']}"
 
 bash 'install-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
-    rm -rf #{node['go']['install_dir']}/go
-    tar -C #{node['go']['install_dir']} -xzf #{node['go']['filename']}
+    rm -rf #{node['golang']['install_dir']}/go
+    tar -C #{node['golang']['install_dir']} -xzf #{node['golang']['filename']}
   EOH
-  not_if { node['go']['from_source'] }
+  not_if { node['golang']['from_source'] }
   action :nothing
 end
 
@@ -36,24 +36,24 @@ bash 'build-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
-    rm -rf #{node['go']['install_dir']}/go
-    tar -C #{node['go']['install_dir']} -xzf #{node['go']['filename']}
-    cd #{node['go']['install_dir']}/go/src
+    rm -rf #{node['golang']['install_dir']}/go
+    tar -C #{node['golang']['install_dir']} -xzf #{node['golang']['filename']}
+    cd #{node['golang']['install_dir']}/go/src
     mkdir -p $GOBIN
-    ./#{node['go']['source_method']}
+    ./#{node['golang']['source_method']}
   EOH
   environment ({
-    'GOROOT' => "#{node['go']['install_dir']}/go",
+    'GOROOT' => "#{node['golang']['install_dir']}/go",
     'GOBIN'  => '$GOROOT/bin',
-    'GOOS'   => node['go']['os'],
-    'GOARCH' => node['go']['arch'],
-    'GOARM'  => node['go']['arm']
+    'GOOS'   => node['golang']['os'],
+    'GOARCH' => node['golang']['arch'],
+    'GOARM'  => node['golang']['arm']
   })
-  only_if { node['go']['from_source'] }
+  only_if { node['golang']['from_source'] }
   action :nothing
 end
 
-if node['go']['from_source']
+if node['golang']['from_source']
   case node['platform']
   when 'debian', 'ubuntu'
     packages = %w[build-essential]
@@ -67,39 +67,39 @@ if node['go']['from_source']
   end
 end
 
-remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
-  source node['go']['url']
+remote_file File.join(Chef::Config[:file_cache_path], node['golang']['filename']) do
+  source node['golang']['url']
   owner 'root'
   mode 0o644
   notifies :run, 'bash[install-golang]', :immediately
   notifies :run, 'bash[build-golang]', :immediately
-  not_if "#{node['go']['install_dir']}/go/bin/go version | grep \"go#{node['go']['version']} \""
+  not_if "#{node['golang']['install_dir']}/go/bin/go version | grep \"go#{node['golang']['version']} \""
 end
 
-directory node['go']['gopath'] do
+directory node['golang']['gopath'] do
   action :create
   recursive true
-  owner node['go']['owner']
-  group node['go']['group']
-  mode node['go']['mode']
+  owner node['golang']['owner']
+  group node['golang']['group']
+  mode node['golang']['mode']
 end
 
-directory node['go']['gobin'] do
+directory node['golang']['gobin'] do
   action :create
   recursive true
-  owner node['go']['owner']
-  group node['go']['group']
-  mode node['go']['mode']
+  owner node['golang']['owner']
+  group node['golang']['group']
+  mode node['golang']['mode']
 end
 
 template '/etc/profile.d/golang.sh' do
   source 'golang.sh.erb'
-  owner node['go']['owner']
-  group node['go']['group']
-  mode node['go']['mode']
+  owner node['golang']['owner']
+  group node['golang']['group']
+  mode node['golang']['mode']
 end
 
-if node['go']['scm']
+if node['golang']['scm']
   %w[git mercurial bzr].each do |scm|
     package scm
   end

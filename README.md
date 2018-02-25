@@ -1,28 +1,26 @@
 [![Build Status](https://travis-ci.org/NOX73/chef-golang.svg?branch=master)](https://travis-ci.org/NOX73/chef-golang)
 [![Cookbook Version](https://img.shields.io/cookbook/v/golang.svg?style=flat)](https://supermarket.chef.io/cookbooks/golang)
 
-# golang (Chef cookbook for Go)
+# chef-golang (Chef cookbook Go)
 
 ## Description
 
-Chef cookbook for [Go programming language](http://golang.org/).
+Chef cookbook for the [Go programming language](http://golang.org/).
 
 ##  Requirements
 
 ### Platform
 
-* Ubuntu (12.04/13.04/14.10)
-* Debian (6.0)
-* CentOS (6.5)
+* Ubuntu (16.04)
+* Debian (8)
+* CentOS (6.9)
 
-**Notes**: This cookbook has been tested on the listed platforms. It
-may work on other platforms with or without modification. Please
-[report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
+**Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification. Please [report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
 
 
 ## Usage
 
-#### golang::default
+#### chef-golang::default
 
 Just include `golang` in your node's `run_list`:
 
@@ -30,14 +28,14 @@ Just include `golang` in your node's `run_list`:
 {
   "name":"my_node",
   "run_list": [
-    "recipe[golang]"
+    "recipe[chef-golang]"
   ]
 }
 ```
 
-#### golang::packages
+#### chef-golang::packages
 
-To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['go']['packages']` attribute:
+To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['golang']['packages']` attribute:
 
 ```json
 {
@@ -56,23 +54,22 @@ To install Go packages using node attributes, include `golang::packages` in your
 
 ## Attributes
 
-#### golang::default
-
+#### chef-golang::default
 
 Key | Type | Description | Default
 --- | ---- | ----------- | -------
-`['go']['version']` | String | Go version | `1.5`
-`['go']['platform']` | String | `amd64` or `i386` | `amd64`
-`['go']['scm']` | Boolean | install SCM dependencies `git`, `hg`, and `bzr` | `true`
-`['go']['packages']` | Array | Go packages to install when using the `golang::packages` recipe | `[]`
-`['go']['owner']` | String | The user account that owns $GOPATH | `root`
-`['go']['group']` | String | The group that owns $GOPATH | `root`
-`['go']['mode']` | String | The mode of $GOPATH | `0755`
-`['go']['from_source']` | Boolean | Install go from source | `false`
-`['go']['os']` | String | Build go for which operating system | `linux`
-`['go']['arch']` | String | Build go for which architecture | `arm`
-`['go']['arm']` | String | Build go for which arm version | `6`
-`['go']['source_method']` | String | Choose which install script should be used | `all.bash`
+`['golang']['version']` | String | Go version | `1.5`
+`['golang']['platform']` | String | `amd64` or `i386` | `amd64`
+`['golang']['scm']` | Boolean | install SCM dependencies `git`, `hg`, and `bzr` | `true`
+`['golang']['packages']` | Array | Go packages to install when using the `golang::packages` recipe | `[]`
+`['golang']['owner']` | String | The user account that owns $GOPATH | `root`
+`['golang']['group']` | String | The group that owns $GOPATH | `root`
+`['golang']['mode']` | String | The mode of $GOPATH | `0755`
+`['golang']['from_source']` | Boolean | Install go from source | `false`
+`['golang']['os']` | String | Build go for which operating system | `linux`
+`['golang']['arch']` | String | Build go for which architecture | `arm`
+`['golang']['arm']` | String | Build go for which arm version | `6`
+`['golang']['source_method']` | String | Choose which install script should be used | `all.bash`
 
 ## Testing
 
@@ -87,11 +84,3 @@ satisfied:
 * [Vagrant](http://vagrantup.com/) (>= 1.1.0)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant Berkshelf Plugin](http://rubygems.org/gems/vagrant-berkshelf)
-
-## Contributing
-
-1. Fork the repository
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Test it by running `rake kitchen:all`
-5. Submit a Pull Request
