@@ -2,5 +2,5 @@ language: ruby
 gemfile:
    - test/support/Gemfile
 rvm:
-  - 2.2.2
-script: bundle exec rake foodcritic
+  - 2.3.1
+script: bundle exec rake foodcritic -T ~FC113

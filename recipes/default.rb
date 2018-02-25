@@ -21,7 +21,7 @@ node.default['go']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : '
 node.default['go']['filename'] = "go#{node['go']['version']}.#{node['os']}-#{node['go']['platform']}.tar.gz"
 node.default['go']['url'] = "http://golang.org/dl/#{node['go']['filename']}"
 
-bash "install-golang" do
+bash 'install-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
@@ -32,7 +32,7 @@ bash "install-golang" do
   action :nothing
 end
 
-bash "build-golang" do
+bash 'build-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     rm -rf go
@@ -54,11 +54,11 @@ bash "build-golang" do
 end
 
 if node['go']['from_source']
-  case node["platform"]
+  case node['platform']
   when 'debian', 'ubuntu'
-    packages = %w(build-essential)
+    packages = %w[build-essential]
   when 'redhat', 'centos', 'fedora'
-    packages = %w(gcc glibc-devel)
+    packages = %w[gcc glibc-devel]
   end
   packages.each do |dev_package|
     package dev_package do
@@ -70,7 +70,7 @@ end
 remote_file File.join(Chef::Config[:file_cache_path], node['go']['filename']) do
   source node['go']['url']
   owner 'root'
-  mode 0644
+  mode 0o644
   notifies :run, 'bash[install-golang]', :immediately
   notifies :run, 'bash[build-golang]', :immediately
   not_if "#{node['go']['install_dir']}/go/bin/go version | grep \"go#{node['go']['version']} \""
@@ -92,15 +92,15 @@ directory node['go']['gobin'] do
   mode node['go']['mode']
 end
 
-template "/etc/profile.d/golang.sh" do
-  source "golang.sh.erb"
+template '/etc/profile.d/golang.sh' do
+  source 'golang.sh.erb'
   owner node['go']['owner']
   group node['go']['group']
   mode node['go']['mode']
 end
 
 if node['go']['scm']
-  %w(git mercurial bzr).each do |scm|
+  %w[git mercurial bzr].each do |scm|
     package scm
   end
 end
