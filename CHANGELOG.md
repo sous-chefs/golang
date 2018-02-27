@@ -2,9 +2,12 @@
 
 This file is used to list changes made in each version of golang.
 
-## 2.0.0
+## 3.0.0
 
 * rename to `chef-golang` so that metadata name matches repositoriy name
+
+## 2.0.0
+
 * change attribute namespace to `node['golang']`
 
 ## 1.7.2
