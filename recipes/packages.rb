@@ -17,8 +17,8 @@
 # under the License.
 #
 
-include_recipe 'golang'
+include_recipe 'chef-golang'
 
 node['golang']['packages'].each do |package|
-  golang_package package
+  chef_golang_package package
 end
