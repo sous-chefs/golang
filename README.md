@@ -71,14 +71,9 @@ Key | Type | Description | Default
 
 ## Testing
 
-This project have [foodcritic](https://github.com/acrmp/foodcritic) for syntax checking and
-[test-kitchen](https://github.com/opscode/test-kitchen) for integration testing. You can run the test suite by
-typing: `rake kitchen:all` (may be slow for the first time).
+This project uses [Chef Workstation](https://docs.chef.io/workstation/) to enable testing using `cookstyle` (for linting and style), and [Test Kitchen](https://kitchen.ci) for acceptance testing.
 
-In order to run these tests, the following
-[requirements](https://github.com/opscode/kitchen-vagrant#-requirements) must be
-satisfied:
+In order to run these tests, the following requirements must be satisfied:
 
-* [Vagrant](http://vagrantup.com/) (>= 1.1.0)
-* [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant Berkshelf Plugin](http://rubygems.org/gems/vagrant-berkshelf)
+* Chef Workstation or Chef DK
+* Docker (for acceptance tests using Test Kitchen)
