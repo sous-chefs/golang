@@ -2,6 +2,21 @@
 
 This file is used to list changes made in each version of golang.
 
+## Unreleased
+
+* Clear up naming confusion: this cookbook is called `golang`, and its repository is named `chef-golang` to be clear that it is a Chef cookbook
+* Update testing setup:
+    - Use Chef Workstation instead of Rubygems
+        + Includes dropping `foodcritic` in favor of current `cookstyle`
+    - Add more recent & current distro versions
+    - Add very basic unit tests
+    - Use GitHub Actions instead of Travis CI
+* Refactor minitest to Inspec
+* Refactor to use current style of Chef Custom Resource
+* Update default version to Go v1.14.4
+* Use `build_essential` when building from source
+    - Requires Chef >= 14.0.0
+
 ## 3.0.0
 
 * rename to `chef-golang` so that metadata name matches repositoriy name
