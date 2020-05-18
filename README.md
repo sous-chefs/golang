@@ -11,9 +11,9 @@ Chef cookbook for the [Go programming language](http://golang.org/).
 
 ### Platform
 
-* Ubuntu (16.04)
-* Debian (8)
-* CentOS (6.9)
+* Ubuntu >= 16.04
+* Debian >= 8
+* CentOS >= 6.9
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification. Please [report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
 
