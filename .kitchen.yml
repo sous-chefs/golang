@@ -1,25 +1,36 @@
 ---
 driver:
-  name: vagrant
+  name: dokken
+  chef_version: latest
+  privileged: true  # because Docker and systemd/Upstart
+
+transport:
+  name: dokken
 
 provisioner:
-  name: chef_zero
-  require_chef_omnibus: true
+  name: dokken
 
 platforms:
 - name: ubuntu-16.04
+  driver:
+    image: dokken/ubuntu-16.04
+    pid_one_command: /bin/systemd
+
 - name: debian-8
-- name: centos-6.9
+  driver:
+    image: dokken/debian-8
+    pid_one_command: /bin/systemd
+
+- name: centos-6
+  driver:
+    image: dokken/centos-6
+    pid_one_command: /sbin/init
 
 suites:
 - name: default
   run_list:
     - recipe[golang_test::default]
     - recipe[minitest-handler]
-  attributes:
-    golang:
-      owner: 'vagrant'
-      group: 'vagrant'
 - name: src
   run_list:
     - recipe[golang_test::default]
@@ -28,5 +39,3 @@ suites:
     golang:
       from_source: true
       arch: 'amd64'
-      owner: 'vagrant'
-      group: 'vagrant'
