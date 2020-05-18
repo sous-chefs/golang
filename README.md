@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/NOX73/chef-golang.svg?branch=master)](https://travis-ci.org/NOX73/chef-golang)
 [![Cookbook Version](https://img.shields.io/cookbook/v/golang.svg?style=flat)](https://supermarket.chef.io/cookbooks/golang)
 
-# chef-golang (Chef cookbook Go)
+# golang (Chef cookbook Go)
 
 ## Description
 
@@ -17,10 +17,9 @@ Chef cookbook for the [Go programming language](http://golang.org/).
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification. Please [report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
 
-
 ## Usage
 
-#### chef-golang::default
+### golang::default
 
 Just include `golang` in your node's `run_list`:
 
@@ -28,19 +27,19 @@ Just include `golang` in your node's `run_list`:
 {
   "name":"my_node",
   "run_list": [
-    "recipe[chef-golang]"
+    "recipe[golang]"
   ]
 }
 ```
 
-#### chef-golang::packages
+### golang::packages
 
 To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['golang']['packages']` attribute:
 
 ```json
 {
   "name":"my_node",
-  "go": {
+  "golang": {
     "packages": [
       "launchpad.net/gocheck"
     ]
@@ -51,10 +50,9 @@ To install Go packages using node attributes, include `golang::packages` in your
 }
 ```
 
-
 ## Attributes
 
-#### chef-golang::default
+### golang::default
 
 Key | Type | Description | Default
 --- | ---- | ----------- | -------
