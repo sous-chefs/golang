@@ -17,4 +17,4 @@ default['golang']['scm'] = true
 default['golang']['packages'] = []
 default['golang']['owner'] = 'root'
 default['golang']['group'] = 'root'
-default['golang']['mode'] = 0o755
+default['golang']['mode'] = '0755'

@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: golang
+# Cookbook:: golang
 # Recipe:: default
 #
-# Copyright 2013, Alexander Rozhnov
+# Copyright:: 2013, Alexander Rozhnov
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy
@@ -42,12 +42,12 @@ bash 'build-golang' do
     mkdir -p $GOBIN
     ./#{node['golang']['source_method']}
   EOH
-  environment ({
+  environment({
     'GOROOT' => "#{node['golang']['install_dir']}/go",
     'GOBIN'  => '$GOROOT/bin',
     'GOOS'   => node['golang']['os'],
     'GOARCH' => node['golang']['arch'],
-    'GOARM'  => node['golang']['arm']
+    'GOARM'  => node['golang']['arm'],
   })
   only_if { node['golang']['from_source'] }
   action :nothing
@@ -56,9 +56,9 @@ end
 if node['golang']['from_source']
   case node['platform']
   when 'debian', 'ubuntu'
-    packages = %w[build-essential]
+    packages = %w(build-essential)
   when 'redhat', 'centos', 'fedora'
-    packages = %w[gcc glibc-devel]
+    packages = %w(gcc glibc-devel)
   end
   packages.each do |dev_package|
     package dev_package do
@@ -70,7 +70,7 @@ end
 remote_file File.join(Chef::Config[:file_cache_path], node['golang']['filename']) do
   source node['golang']['url']
   owner 'root'
-  mode 0o644
+  mode '0644'
   notifies :run, 'bash[install-golang]', :immediately
   notifies :run, 'bash[build-golang]', :immediately
   not_if "#{node['golang']['install_dir']}/go/bin/go version | grep \"go#{node['golang']['version']} \""
@@ -99,8 +99,8 @@ template '/etc/profile.d/golang.sh' do
   mode node['golang']['mode']
 end
 
-if node['golang']['scm']
-  %w[git mercurial bzr].each do |scm|
-    package scm
+%w(git mercurial bzr).each do |scm|
+  package scm do
+    only_if { node['golang']['scm'] }
   end
 end
