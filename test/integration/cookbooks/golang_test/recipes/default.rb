@@ -19,10 +19,10 @@
 
 include_recipe 'golang::packages'
 
-golang_package 'launchpad.net/gocheck'
+golang_package 'github.com/go-check/check'
 
 remote_directory '/tmp/hello_world'
 
-golang_package 'code.google.com/p/go.example/hello' do
+golang_package 'github.com/golang/example/hello' do
   action %i(install build)
 end

@@ -41,7 +41,7 @@ To install Go packages using node attributes, include `golang::packages` in your
   "name":"my_node",
   "golang": {
     "packages": [
-      "launchpad.net/gocheck"
+      "github.com/go-check/check"
     ]
   },
   "run_list": [
