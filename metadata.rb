@@ -6,7 +6,7 @@ maintainer_email 'gnox73@gmail.com'
 license          'Apache-2.0'
 description      'Installs go programming language'
 version          '3.0.1'
-chef_version     '>= 12' if respond_to?(:chef_version)
+chef_version     '>= 14.0'
 
 supports 'debian'
 supports 'ubuntu'

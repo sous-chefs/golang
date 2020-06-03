@@ -28,6 +28,10 @@ bash 'install-golang' do
   action :nothing
 end
 
+build_essential do
+  only_if { node['golang']['from_source'] }
+end
+
 bash 'build-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
@@ -47,20 +51,6 @@ bash 'build-golang' do
   })
   only_if { node['golang']['from_source'] }
   action :nothing
-end
-
-if node['golang']['from_source']
-  case node['platform']
-  when 'debian', 'ubuntu'
-    packages = %w(build-essential)
-  when 'redhat', 'centos', 'fedora'
-    packages = %w(gcc glibc-devel)
-  end
-  packages.each do |dev_package|
-    package dev_package do
-      action :install
-    end
-  end
 end
 
 remote_file File.join(Chef::Config[:file_cache_path], node['golang']['filename']) do
