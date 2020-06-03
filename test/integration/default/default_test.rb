@@ -1,5 +1,5 @@
 describe command '/usr/local/go/bin/go version' do
-  its('stdout') { should include '1.5' }
+  its('stdout') { should include '1.14.4' }
 end
 
 describe command 'export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bin/go test' do

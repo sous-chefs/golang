@@ -1,4 +1,4 @@
-default['golang']['version'] = '1.5'
+default['golang']['version'] = '1.14.4'
 default['golang']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
 default['golang']['filename'] = "go#{node['golang']['version']}.#{node['os']}-#{node['golang']['platform']}.tar.gz"
 default['golang']['from_source'] = false
