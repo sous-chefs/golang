@@ -9,7 +9,8 @@ if node['golang']['from_source']
   default['golang']['arm'] = '6'
   default['golang']['source_method'] = 'all.bash'
 end
-default['golang']['url'] = "http://golang.org/dl/#{node['golang']['filename']}"
+# E.g., https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz
+default['golang']['url'] = "https://dl.google.com/go/#{node['golang']['filename']}"
 default['golang']['install_dir'] = '/usr/local'
 default['golang']['gopath'] = '/opt/go'
 default['golang']['gobin'] = '/opt/go/bin'
