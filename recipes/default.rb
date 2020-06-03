@@ -17,10 +17,6 @@
 # under the License.
 #
 
-node.default['golang']['platform'] = node['kernel']['machine'] =~ /i.86/ ? '386' : 'amd64'
-node.default['golang']['filename'] = "go#{node['golang']['version']}.#{node['os']}-#{node['golang']['platform']}.tar.gz"
-node.default['golang']['url'] = "http://golang.org/dl/#{node['golang']['filename']}"
-
 bash 'install-golang' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
