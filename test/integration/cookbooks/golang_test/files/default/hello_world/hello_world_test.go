@@ -1,7 +1,7 @@
 package hello_world
 
 import (
-  . "launchpad.net/gocheck"
+  . "github.com/go-check/check"
   "testing"
 )
 
@@ -13,4 +13,3 @@ var _ = Suite(&HelloWorldSuite{})
 func (s *HelloWorldSuite) TestHelloWorld(c *C) {
     c.Assert(HelloWorld(), Equals, "Hello world!")
 }
-

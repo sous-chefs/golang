@@ -1,8 +1,7 @@
-source 'https://supermarket.getchef.com'
+source 'https://supermarket.chef.io'
 
 metadata
 
 group :integration do
-  cookbook 'minitest-handler'
-  cookbook 'golang_test', path: 'test/cookbooks/golang_test'
+  cookbook 'golang_test', path: 'test/integration/cookbooks/golang_test'
 end

@@ -1,10 +1,10 @@
 # golang_test Cookbook
 
-Testing cookbook for `chef-golang`.
+Testing cookbook for `golang`.
 
 ## Requirements
 
-Depends on `chef-golang`.
+Depends on `golang`.
 
 ## Usage
 

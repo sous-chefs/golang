@@ -1,26 +1,25 @@
 [![Build Status](https://travis-ci.org/NOX73/chef-golang.svg?branch=master)](https://travis-ci.org/NOX73/chef-golang)
 [![Cookbook Version](https://img.shields.io/cookbook/v/golang.svg?style=flat)](https://supermarket.chef.io/cookbooks/golang)
 
-# chef-golang (Chef cookbook Go)
+# golang (Chef cookbook Go)
 
 ## Description
 
 Chef cookbook for the [Go programming language](http://golang.org/).
 
-##  Requirements
+## Requirements
 
 ### Platform
 
-* Ubuntu (16.04)
-* Debian (8)
-* CentOS (6.9)
+* Ubuntu >= 16.04
+* Debian >= 8
+* CentOS >= 6.9
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification. Please [report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
 
-
 ## Usage
 
-#### chef-golang::default
+### golang::default
 
 Just include `golang` in your node's `run_list`:
 
@@ -28,21 +27,21 @@ Just include `golang` in your node's `run_list`:
 {
   "name":"my_node",
   "run_list": [
-    "recipe[chef-golang]"
+    "recipe[golang]"
   ]
 }
 ```
 
-#### chef-golang::packages
+### golang::packages
 
 To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['golang']['packages']` attribute:
 
 ```json
 {
   "name":"my_node",
-  "go": {
+  "golang": {
     "packages": [
-      "launchpad.net/gocheck"
+      "github.com/go-check/check"
     ]
   },
   "run_list": [
@@ -51,10 +50,9 @@ To install Go packages using node attributes, include `golang::packages` in your
 }
 ```
 
-
 ## Attributes
 
-#### chef-golang::default
+### golang::default
 
 Key | Type | Description | Default
 --- | ---- | ----------- | -------
@@ -73,14 +71,9 @@ Key | Type | Description | Default
 
 ## Testing
 
-This project have [foodcritic](https://github.com/acrmp/foodcritic) for syntax checking and
-[test-kitchen](https://github.com/opscode/test-kitchen) for integration testing. You can run the test suite by
-typing: `rake kitchen:all` (may be slow for the first time).
+This project uses [Chef Workstation](https://docs.chef.io/workstation/) to enable testing using `cookstyle` (for linting and style), and [Test Kitchen](https://kitchen.ci) for acceptance testing.
 
-In order to run these tests, the following
-[requirements](https://github.com/opscode/kitchen-vagrant#-requirements) must be
-satisfied:
+In order to run these tests, the following requirements must be satisfied:
 
-* [Vagrant](http://vagrantup.com/) (>= 1.1.0)
-* [VirtualBox](https://www.virtualbox.org/)
-* [Vagrant Berkshelf Plugin](http://rubygems.org/gems/vagrant-berkshelf)
+* Chef Workstation or Chef DK
+* Docker (for acceptance tests using Test Kitchen)

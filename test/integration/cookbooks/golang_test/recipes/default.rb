@@ -1,6 +1,6 @@
 #
-# Cookbook:: golang
-# Recipe:: packages
+# Cookbook:: golang_test
+# Recipe:: default
 #
 # Copyright:: 2013, Alexander Rozhnov
 #
@@ -17,8 +17,12 @@
 # under the License.
 #
 
-include_recipe 'golang'
+include_recipe 'golang::packages'
 
-node['golang']['packages'].each do |package|
-  golang_package package
+golang_package 'github.com/go-check/check'
+
+remote_directory '/tmp/hello_world'
+
+golang_package 'github.com/golang/example/hello' do
+  action %i(install build)
 end

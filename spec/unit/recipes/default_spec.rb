@@ -1,8 +1,8 @@
 #
 # Cookbook:: golang
-# Recipe:: packages
+# Spec:: default
 #
-# Copyright:: 2013, Alexander Rozhnov
+# Copyright:: 2020, Jeff Byrnes
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy
@@ -17,8 +17,18 @@
 # under the License.
 #
 
-include_recipe 'golang'
+require 'spec_helper'
 
-node['golang']['packages'].each do |package|
-  golang_package package
+describe 'golang::default' do
+  context 'When all attributes are default, on Ubuntu 20.04' do
+    platform 'ubuntu', '20.04'
+
+    before do
+      stub_command('/usr/local/go/bin/go version | grep "go1.14.4 "').and_return false
+    end
+
+    it 'converges successfully' do
+      expect { chef_run }.to_not raise_error
+    end
+  end
 end
