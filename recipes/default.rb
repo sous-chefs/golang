@@ -85,8 +85,12 @@ template '/etc/profile.d/golang.sh' do
   mode node['golang']['mode']
 end
 
-%w(git mercurial bzr).each do |scm|
-  package scm do
-    only_if { node['golang']['scm'] }
+if node['golang']['scm']
+  apt_update do
+    only_if { platform_family? 'debian' }
+  end
+
+  node['golang']['scm_packages'].each do |scm|
+    package scm
   end
 end

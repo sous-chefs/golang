@@ -60,6 +60,11 @@ platforms:
   driver:
     image: dokken/centos-8
     pid_one_command: /usr/lib/systemd/systemd
+  attributes:
+    golang:
+      scm_packages:
+      - git
+      - mercurial
 
 suites:
 - name: default
