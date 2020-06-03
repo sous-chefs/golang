@@ -1,4 +1,4 @@
-## Contributing
+# Contributing
 
 1. Fork the repository
 2. Create a named feature branch (like `add_component_x`)

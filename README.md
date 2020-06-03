@@ -7,7 +7,7 @@
 
 Chef cookbook for the [Go programming language](http://golang.org/).
 
-##  Requirements
+## Requirements
 
 ### Platform
 
