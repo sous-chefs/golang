@@ -33,29 +33,22 @@ jobs:
         uses: actions/checkout@master
       - name: Run Markdown Lint
         uses: actionshub/markdownlint@master
-        with:
-          path: --rules ~MD004,~MD007,~MD013,~MD024,~MD029 ./
 
   dokken:
-    needs:
-      - yamllint
-      - delivery
+    needs: [mdl, yamllint, delivery]
     runs-on: ubuntu-latest
     strategy:
       matrix:
         os:
           - centos-7
           - centos-8
-          - ubuntu-1604
           - ubuntu-1804
           - ubuntu-2004
+          - debian-9
+          - debian-10
         suite:
           - default
           - src
-        chef_version:
-          - 14
-          - 15
-          - 16
       fail-fast: false
 
     steps:
@@ -67,7 +60,6 @@ jobs:
         uses: actionshub/kitchen-dokken@master
         env:
           CHEF_LICENSE: accept-no-persist
-          CHEF_VERSION: ${{ matrix.chef_version }}
         with:
           suite: ${{ matrix.suite }}
           os: ${{ matrix.os }}
