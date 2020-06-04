@@ -1,0 +1,37 @@
+---
+driver:
+  name: dokken
+  chef_version: latest
+  privileged: true  # because Docker and systemd/Upstart
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+verifier:
+  name: inspec
+  inspec_tests:
+    - test/integration/default
+
+platforms:
+
+  - name: ubuntu-18.04
+  - name: ubuntu-20.04
+  - name: centos-7
+  - name: centos-8
+  - name: debian-9
+  - name: debian-10
+
+suites:
+  - name: default
+    run_list:
+      - recipe[golang_test::default]
+  - name: src
+    run_list:
+      - recipe[golang_test::default]
+    attributes:
+      golang:
+        from_source: true
+        arch: 'amd64'

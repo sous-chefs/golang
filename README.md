@@ -1,7 +1,10 @@
-[![Build Status](https://travis-ci.org/NOX73/chef-golang.svg?branch=master)](https://travis-ci.org/NOX73/chef-golang)
-[![Cookbook Version](https://img.shields.io/cookbook/v/golang.svg?style=flat)](https://supermarket.chef.io/cookbooks/golang)
+# Golang (Go) Cookbook
 
-# golang (Chef cookbook Go)
+[![Cookbook Version](https://img.shields.io/cookbook/v/golang.svg?style=flat)](https://supermarket.chef.io/cookbooks/golang)
+[![CI State](https://github.com/sous-chefs/golang/workflows/ci/badge.svg)](https://github.com/sous-chefs/golang/actions?query=workflow%3Aci)
+[![OpenCollective](https://opencollective.com/sous-chefs/backers/badge.svg)](#backers)
+[![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
 
@@ -11,11 +14,9 @@ Chef cookbook for the [Go programming language](http://golang.org/).
 
 ### Platform
 
-* Ubuntu >= 16.04
+* Ubuntu >= 18.04
 * Debian >= 8
-* CentOS >= 6.9
-
-**Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification. Please [report issues](https://github.com/NOX73/chef-golang/issues) any additional platforms so they can be added.
+* CentOS >= 7
 
 ## Usage
 
@@ -69,11 +70,27 @@ Key | Type | Description | Default
 `['golang']['arm']` | String | Build go for which arm version | `6`
 `['golang']['source_method']` | String | Choose which install script should be used | `all.bash`
 
-## Testing
+## Contributors
 
-This project uses [Chef Workstation](https://docs.chef.io/workstation/) to enable testing using `cookstyle` (for linting and style), and [Test Kitchen](https://kitchen.ci) for acceptance testing.
+This project exists thanks to all the people who [contribute.](https://opencollective.com/sous-chefs/contributors.svg?width=890&button=false)
 
-In order to run these tests, the following requirements must be satisfied:
+### Backers
 
-* Chef Workstation or Chef DK
-* Docker (for acceptance tests using Test Kitchen)
+Thank you to all our backers!
+
+![https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40)
+
+### Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+
+![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/2/website](https://opencollective.com/sous-chefs/sponsor/2/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/3/website](https://opencollective.com/sous-chefs/sponsor/3/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/4/website](https://opencollective.com/sous-chefs/sponsor/4/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/5/website](https://opencollective.com/sous-chefs/sponsor/5/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/6/website](https://opencollective.com/sous-chefs/sponsor/6/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/7/website](https://opencollective.com/sous-chefs/sponsor/7/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/8/website](https://opencollective.com/sous-chefs/sponsor/8/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/9/website](https://opencollective.com/sous-chefs/sponsor/9/avatar.svg?avatarHeight=100)
