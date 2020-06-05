@@ -17,51 +17,6 @@
 # under the License.
 #
 
-bash 'install-golang' do
-  cwd Chef::Config[:file_cache_path]
-  code <<-EOH
-    rm -rf go
-    rm -rf #{node['golang']['install_dir']}/go
-    tar -C #{node['golang']['install_dir']} -xzf #{node['golang']['filename']}
-  EOH
-  not_if { node['golang']['from_source'] }
-  action :nothing
-end
-
-build_essential do
-  only_if { node['golang']['from_source'] }
-end
-
-bash 'build-golang' do
-  cwd Chef::Config[:file_cache_path]
-  code <<-EOH
-    rm -rf go
-    rm -rf #{node['golang']['install_dir']}/go
-    tar -C #{node['golang']['install_dir']} -xzf #{node['golang']['filename']}
-    cd #{node['golang']['install_dir']}/go/src
-    mkdir -p $GOBIN
-    ./#{node['golang']['source_method']}
-  EOH
-  environment({
-    'GOROOT' => "#{node['golang']['install_dir']}/go",
-    'GOBIN'  => '$GOROOT/bin',
-    'GOOS'   => node['golang']['os'],
-    'GOARCH' => node['golang']['arch'],
-    'GOARM'  => node['golang']['arm'],
-  })
-  only_if { node['golang']['from_source'] }
-  action :nothing
-end
-
-remote_file File.join(Chef::Config[:file_cache_path], node['golang']['filename']) do
-  source node['golang']['url']
-  owner 'root'
-  mode '0644'
-  notifies :run, 'bash[install-golang]', :immediately
-  notifies :run, 'bash[build-golang]', :immediately
-  not_if "#{node['golang']['install_dir']}/go/bin/go version | grep \"go#{node['golang']['version']} \""
-end
-
 directory node['golang']['gopath'] do
   action :create
   recursive true
@@ -93,4 +48,45 @@ if node['golang']['scm']
   node['golang']['scm_packages'].each do |scm|
     package scm
   end
+end
+
+ark 'go' do
+  url node['golang']['url']
+  version node['golang']['version']
+end
+
+build_essential do
+  only_if { node['golang']['from_source'] }
+end
+
+file "#{node['golang']['install_dir']}/go" do
+  action :delete
+  only_if do
+    node['golang']['from_source'] &&
+      # Create idempotency by not deleting symlink if it points to source build
+      File.readlink("#{node['golang']['install_dir']}/go") != "#{node['golang']['install_dir']}/go-source"
+  end
+end
+
+ark 'go' do
+  url node['golang']['source_url']
+  version 'source'
+  action :put
+  only_if { node['golang']['from_source'] }
+end
+
+directory "#{node['golang']['install_dir']}/go/bin" do
+  only_if { node['golang']['from_source'] }
+end
+
+execute 'build-golang' do
+  cwd "#{node['golang']['install_dir']}/go/src"
+  command "./#{node['golang']['source_method']}"
+  environment({
+    # Use the package-installed Go as the bootstrap version b/c Go is built with Go
+    GOROOT_BOOTSTRAP: "#{node['golang']['install_dir']}/go-#{node['golang']['version']}",
+    GOROOT: "#{node['golang']['install_dir']}/go",
+    GOBIN: "#{node['golang']['install_dir']}/go/bin",
+  })
+  only_if { node['golang']['from_source'] }
 end
