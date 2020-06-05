@@ -22,6 +22,7 @@ This file is used to list changes made in each version of golang.
 - Clean up unnecessary env vars from source build
 - Build from source per [official Go docs](https://golang.org/doc/install/source)
 - Use native resources instead of shell commands when building from source
+- Set `$PATH` in `golang.sh` so that the existing values are last, per general practice
 
 ## 3.0.0
 
