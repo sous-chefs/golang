@@ -4,9 +4,6 @@ default['golang']['filename'] = "go#{node['golang']['version']}.#{node['os']}-#{
 default['golang']['from_source'] = false
 if node['golang']['from_source']
   default['golang']['filename'] = "go#{node['golang']['version']}.src.tar.gz"
-  default['golang']['os'] = 'linux'
-  default['golang']['arch'] = 'arm'
-  default['golang']['arm'] = '6'
   default['golang']['source_method'] = 'all.bash'
 end
 # E.g., https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz

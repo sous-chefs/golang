@@ -16,3 +16,5 @@ supports 'fedora'
 supports 'amazon'
 supports 'scientific'
 supports 'oracle'
+
+depends 'ark', '~> 5.0'
