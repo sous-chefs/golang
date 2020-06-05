@@ -16,6 +16,7 @@ This file is used to list changes made in each version of golang.
 - Update default version to Go v1.14.4
 - Use `build_essential` when building from source
   - Requires Chef >= 14.0.0
+- Omit attempting to install `bzr` on CentOS 8, they do not have that package available
 
 ## 3.0.0
 
