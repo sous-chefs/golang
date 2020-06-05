@@ -20,6 +20,8 @@ This file is used to list changes made in each version of golang.
 - Utilize default Chef order-of-operations instead of `notifies`
 - Use `ark` resource to simplify download & installation of binary & source
 - Clean up unnecessary env vars from source build
+- Build from source per [official Go docs](https://golang.org/doc/install/source)
+- Use native resources instead of shell commands when building from source
 
 ## 3.0.0
 
