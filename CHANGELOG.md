@@ -23,6 +23,7 @@ This file is used to list changes made in each version of golang.
 - Build from source per [official Go docs](https://golang.org/doc/install/source)
 - Use native resources instead of shell commands when building from source
 - Set `$PATH` in `golang.sh` so that the existing values are last, per general practice
+- Tighten up `golang_package` so it does not perform actions at compile time, it uses `execute` in favor of `bash` resources, and in general is more Chef-y
 
 ## 3.0.0
 
