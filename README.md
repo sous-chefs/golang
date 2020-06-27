@@ -22,7 +22,7 @@ Chef cookbook for the [Go programming language](http://golang.org/).
 
 ### golang::default
 
-Just include `golang` in your node's `run_list`:
+Include `golang` in your node's `run_list`:
 
 ```json
 {
@@ -50,25 +50,6 @@ To install Go packages using node attributes, include `golang::packages` in your
   ]
 }
 ```
-
-## Attributes
-
-### golang::default
-
-Key | Type | Description | Default
---- | ---- | ----------- | -------
-`['golang']['version']` | String | Go version | `1.5`
-`['golang']['platform']` | String | `amd64` or `i386` | `amd64`
-`['golang']['scm']` | Boolean | install SCM dependencies `git`, `hg`, and `bzr` | `true`
-`['golang']['packages']` | Array | Go packages to install when using the `golang::packages` recipe | `[]`
-`['golang']['owner']` | String | The user account that owns $GOPATH | `root`
-`['golang']['group']` | String | The group that owns $GOPATH | `root`
-`['golang']['mode']` | String | The mode of $GOPATH | `0755`
-`['golang']['from_source']` | Boolean | Install go from source | `false`
-`['golang']['os']` | String | Build go for which operating system | `linux`
-`['golang']['arch']` | String | Build go for which architecture | `arm`
-`['golang']['arm']` | String | Build go for which arm version | `6`
-`['golang']['source_method']` | String | Choose which install script should be used | `all.bash`
 
 ## Contributors
 
