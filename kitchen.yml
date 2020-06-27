@@ -12,8 +12,6 @@ provisioner:
 
 verifier:
   name: inspec
-  inspec_tests:
-    - test/integration/default
 
 platforms:
   - name: ubuntu-18.04
@@ -38,3 +36,4 @@ suites:
     attributes:
       golang:
         from_source: true
+        src_version: 1.13.12

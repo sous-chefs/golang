@@ -25,6 +25,7 @@ This file is used to list changes made in each version of golang.
 - Set `$PATH` in `golang.sh` so that the existing values are last, per general practice
 - Tighten up `golang_package` so it does not perform actions at compile time, it uses `execute` in favor of `bash` resources, and in general is more Chef-y
 - Update tests to validate that non-root users can install Go and Go packages
+- Refactor attributes to add ability to install a version from source that differs from the packaged version (which is needed to build from source)
 
 ## 3.0.0
 
