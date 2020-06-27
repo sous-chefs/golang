@@ -38,4 +38,3 @@ suites:
     attributes:
       golang:
         from_source: true
-        arch: 'amd64'
