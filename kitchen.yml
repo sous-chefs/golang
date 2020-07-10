@@ -12,11 +12,8 @@ provisioner:
 
 verifier:
   name: inspec
-  inspec_tests:
-    - test/integration/default
 
 platforms:
-
   - name: ubuntu-18.04
   - name: ubuntu-20.04
   - name: centos-7
@@ -28,10 +25,15 @@ suites:
   - name: default
     run_list:
       - recipe[golang_test::default]
+    attributes:
+      golang:
+        owner: golang
+        group: golang
+
   - name: src
     run_list:
       - recipe[golang_test::default]
     attributes:
       golang:
         from_source: true
-        arch: 'amd64'
+        src_version: 1.13.12

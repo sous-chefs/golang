@@ -17,6 +17,10 @@
 # under the License.
 #
 
+user node['golang']['owner'] do
+  manage_home true
+end
+
 include_recipe 'golang::packages'
 
 golang_package 'github.com/go-check/check'

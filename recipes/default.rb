@@ -18,7 +18,6 @@
 #
 
 directory node['golang']['gopath'] do
-  action :create
   recursive true
   owner node['golang']['owner']
   group node['golang']['group']
@@ -26,7 +25,6 @@ directory node['golang']['gopath'] do
 end
 
 directory node['golang']['gobin'] do
-  action :create
   recursive true
   owner node['golang']['owner']
   group node['golang']['group']
