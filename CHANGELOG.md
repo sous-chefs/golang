@@ -2,9 +2,8 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unreleased
+## 4.0.0
 
-- Clear up naming confusion: this cookbook is called `golang`, and its repository is named `chef-golang` to be clear that it is a Chef cookbook
 - Update testing setup:
   - Use Chef Workstation instead of Rubygems
     - Includes dropping `foodcritic` in favor of current `cookstyle`
