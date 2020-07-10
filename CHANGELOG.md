@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unreleased
+## v4.0.0
 
 - Clear up naming confusion: this cookbook is called `golang`, and its repository is named `chef-golang` to be clear that it is a Chef cookbook
 - Update testing setup:
