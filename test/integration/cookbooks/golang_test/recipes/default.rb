@@ -2,7 +2,7 @@
 # Cookbook:: golang_test
 # Recipe:: default
 #
-# Copyright:: 2013, Alexander Rozhnov
+# Copyright:: 2020, Sous Chefs
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy
@@ -21,7 +21,7 @@ user node['golang']['owner'] do
   manage_home true
 end
 
-include_recipe 'golang::packages'
+include_recipe 'golang'
 
 golang_package 'github.com/go-check/check'
 

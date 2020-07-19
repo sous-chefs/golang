@@ -35,7 +35,7 @@ Include `golang` in your node's `run_list`:
 
 ### golang::packages
 
-To install Go packages using node attributes, include `golang::packages` in your node's `run_list`, and use the `['golang']['packages']` attribute:
+To install Go packages using node attributes add the packages to the `['golang']['packages']` attribute:
 
 ```json
 {
@@ -46,7 +46,7 @@ To install Go packages using node attributes, include `golang::packages` in your
     ]
   },
   "run_list": [
-    "recipe[golang::packages]"
+    "recipe[golang]"
   ]
 }
 ```
