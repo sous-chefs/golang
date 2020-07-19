@@ -7,8 +7,8 @@ describe command 'export GOPATH=/opt/go; cd /tmp/hello_world && /usr/local/go/bi
 end
 
 describe directory '/opt/go' do
-  its('owner') { should eq 'root' }
-  its('group') { should eq 'root' }
+  its('owner') { should eq 'golang' }
+  its('group') { should eq 'golang' }
 end
 
 describe command '/opt/go/bin/hello' do

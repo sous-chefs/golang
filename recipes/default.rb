@@ -21,8 +21,8 @@ golang 'Install go' do
   from_source node['golang']['from_source']
   url node['golang']['url']          # pkg location
   version node['golang']['version']  # go version
-  source_version node['golang']['source_version'] if node['golang']['source_version'] # go version from source
   source_url node['golang']['source_url'] # source location
+  source_version node['golang']['source_version'] if node['golang']['source_version'] # go version from source
   owner node['golang']['owner'] if node['golang']['owner']
   group node['golang']['group'] if node['golang']['group']
 end
