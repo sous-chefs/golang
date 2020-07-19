@@ -36,4 +36,4 @@ suites:
     attributes:
       golang:
         from_source: true
-        src_version: 1.13.12
+        source_version: 1.13.12
