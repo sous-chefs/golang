@@ -25,12 +25,12 @@
 | scm            | Install SCM packages, git and mercurial | True, False             | Default True                        |
 | scm_packages   | Source control packages to install      | String, Array            | Default [git mercurial]            |
 
-
 ```ruby
 golang "Install binary" do
   url 'https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz'
 end
-`
+```
+
 ```ruby
 golang "Install from source" do
   url 'https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz'
@@ -39,4 +39,5 @@ end
 `````
 
 ## Notes
+
 Go compile is bootstrapped using go. So a binary install is required before compiling the source.
