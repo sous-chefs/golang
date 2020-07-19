@@ -37,3 +37,5 @@ suites:
       golang:
         from_source: true
         source_version: 1.13.12
+        owner: golang
+        group: golang
