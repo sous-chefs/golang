@@ -2,9 +2,9 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unpublished
+## 4.1.0
 
-- Create a custom resource to install git from source or by downloading a package
+- Create a custom resource to install Go from source or by downloading a package
 
 ## 4.0.0
 
