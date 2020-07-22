@@ -17,74 +17,14 @@
 # under the License.
 #
 
-directory node['golang']['gopath'] do
-  recursive true
-  owner node['golang']['owner']
-  group node['golang']['group']
-  mode node['golang']['mode']
+golang 'Install go' do
+  from_source node['golang']['from_source']
+  version node['golang']['version'] if node['golang']['version'] # go version
+  source_version node['golang']['source_version'] if node['golang']['source_version'] # go version from source
+  owner node['golang']['owner'] if node['golang']['owner']
+  group node['golang']['group'] if node['golang']['group']
 end
 
-directory node['golang']['gobin'] do
-  recursive true
-  owner node['golang']['owner']
-  group node['golang']['group']
-  mode node['golang']['mode']
-end
-
-template '/etc/profile.d/golang.sh' do
-  source 'golang.sh.erb'
-  owner node['golang']['owner']
-  group node['golang']['group']
-  mode node['golang']['mode']
-end
-
-if node['golang']['scm']
-  apt_update do
-    only_if { platform_family? 'debian' }
-  end
-
-  node['golang']['scm_packages'].each do |scm|
-    package scm
-  end
-end
-
-ark 'go' do
-  url node['golang']['url']
-  version node['golang']['version']
-end
-
-build_essential do
-  only_if { node['golang']['from_source'] }
-end
-
-file "#{node['golang']['install_dir']}/go" do
-  action :delete
-  only_if do
-    node['golang']['from_source'] &&
-      # Create idempotency by not deleting symlink if it points to source build
-      File.readlink("#{node['golang']['install_dir']}/go") != "#{node['golang']['install_dir']}/go-source"
-  end
-end
-
-ark 'go' do
-  url node['golang']['source_url']
-  version 'source'
-  action :put
-  only_if { node['golang']['from_source'] }
-end
-
-directory "#{node['golang']['install_dir']}/go/bin" do
-  only_if { node['golang']['from_source'] }
-end
-
-execute 'build-golang' do
-  cwd "#{node['golang']['install_dir']}/go/src"
-  command "./#{node['golang']['source_method']}"
-  environment({
-    # Use the package-installed Go as the bootstrap version b/c Go is built with Go
-    GOROOT_BOOTSTRAP: "#{node['golang']['install_dir']}/go-#{node['golang']['version']}",
-    GOROOT: "#{node['golang']['install_dir']}/go",
-    GOBIN: "#{node['golang']['install_dir']}/go/bin",
-  })
-  only_if { node['golang']['from_source'] }
+node['golang']['packages'].each do |package|
+  golang_package package
 end

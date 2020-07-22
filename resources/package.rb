@@ -1,3 +1,8 @@
+#
+# Cookbook:: golang
+# Resource:: default
+#
+
 default_action :install
 
 gocache = '/tmp/go'
