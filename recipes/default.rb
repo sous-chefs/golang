@@ -21,6 +21,8 @@ golang 'Install go' do
   from_source node['golang']['from_source']
   version node['golang']['version'] if node['golang']['version'] # go version
   source_version node['golang']['source_version'] if node['golang']['source_version'] # go version from source
+  scm node['golang']['scm']
+  scm_packages node['golang']['scm_packages']
   owner node['golang']['owner'] if node['golang']['owner']
   group node['golang']['group'] if node['golang']['group']
 end
