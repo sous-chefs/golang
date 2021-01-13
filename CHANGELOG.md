@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of golang.
 
+## 4.1.1
+
+- Use `node['golang']['scm']` and `node['golang']['scm_packages']` attributes in default recipe.
+
 ## 4.1.0
 
 - Create a custom resource to install Go from source or by downloading a package
