@@ -6,7 +6,7 @@ description      'Installs go programming language'
 source_url       'https://github.com/sous-chefs/golang'
 issues_url       'https://github.com/sous-chefs/golang/issues'
 chef_version     '>= 14.0'
-version          '4.1.0'
+version          '4.1.1'
 
 supports 'debian'
 supports 'ubuntu'
