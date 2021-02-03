@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of golang.
 
-## 4.1.1
+## Unreleased
 
 - Use `node['golang']['scm']` and `node['golang']['scm_packages']` attributes in default recipe.
 
