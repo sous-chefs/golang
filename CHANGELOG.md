@@ -4,6 +4,9 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
+- Require chef 15.3 or greater
+- Use unified_mode for chef 17 support
+
 ## 4.1.1 - *2021-02-03*
 
 - Use `node['golang']['scm']` and `node['golang']['scm_packages']` attributes in default recipe.
