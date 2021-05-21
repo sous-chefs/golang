@@ -51,6 +51,8 @@ property :source_method, String, default: 'all.bash'
 property :scm, [true, false], default: true
 property :scm_packages, [String, Array], default: %w(git mercurial)
 
+unified_mode
+
 action_class do
   def bin_url
     return new_resource.url if property_is_set?(:url)

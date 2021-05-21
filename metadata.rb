@@ -5,7 +5,7 @@ license          'Apache-2.0'
 description      'Installs go programming language'
 source_url       'https://github.com/sous-chefs/golang'
 issues_url       'https://github.com/sous-chefs/golang/issues'
-chef_version     '>= 14.0'
+chef_version     '>= 15.3'
 version          '4.1.1'
 
 supports 'debian'

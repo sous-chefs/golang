@@ -3,6 +3,8 @@
 # Resource:: default
 #
 
+unified_mode true
+
 default_action :install
 
 gocache = '/tmp/go'
