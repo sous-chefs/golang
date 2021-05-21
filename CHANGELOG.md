@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unreleased
+## 5.0.0 - *2021-05-21*
 
 - Require chef 15.3 or greater
 - Use unified_mode for chef 17 support
