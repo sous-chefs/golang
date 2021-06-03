@@ -101,7 +101,7 @@ action :install do
     source 'golang.sh.erb'
     mode new_resource.directory_mode
     variables gobin: new_resource.gobin,
-              gopath:  new_resource.gobin,
+              gopath:  new_resource.gopath,
               install_dir: new_resource.install_dir
   end
 
