@@ -4,7 +4,6 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
-## 5.0.2 - *2021-06-02*
 
 - Fix resource to use the correct path in GOPATH profile.d template
 
