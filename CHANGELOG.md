@@ -4,7 +4,6 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
-## 5.1.1 - *2021-06-03*
 
 - Update example package to adhere with modern Go standards
 
