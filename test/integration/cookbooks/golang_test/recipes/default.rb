@@ -23,9 +23,9 @@ end
 
 include_recipe 'golang'
 
-golang_package 'github.com/go-check/check'
+package 'gcc' # required for the "go test" in the inspec tests
 
-remote_directory '/tmp/hello_world'
+remote_directory '/tmp/helloWorld'
 
 golang_package 'github.com/golang/example/hello' do
   action %i(install build)
