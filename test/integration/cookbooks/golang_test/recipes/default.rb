@@ -23,8 +23,6 @@ end
 
 include_recipe 'golang'
 
-golang_package 'github.com/go-check/check'
-
 remote_directory '/tmp/hello_world'
 
 golang_package 'github.com/golang/example/hello' do
