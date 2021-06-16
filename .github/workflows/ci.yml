@@ -1,11 +1,11 @@
 ---
 name: ci
 
-on:
+"on":
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   delivery:
@@ -34,7 +34,7 @@ jobs:
       - name: Run Markdown Lint
         uses: actionshub/markdownlint@main
 
-  dokken:
+  integration:
     needs: [mdl, yamllint, delivery]
     runs-on: ubuntu-latest
     strategy:
@@ -63,10 +63,3 @@ jobs:
         with:
           suite: ${{ matrix.suite }}
           os: ${{ matrix.os }}
-
-  final:
-    needs: [dokken]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
