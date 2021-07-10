@@ -4,6 +4,8 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
+- Use `node['golang']['install_dir']` attribute in default recipe.
+
 ## 5.3.3 - *2022-08-07*
 
 Standardise files with files in sous-chefs/repo-management

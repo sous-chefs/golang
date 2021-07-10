@@ -20,6 +20,7 @@
 golang 'Install go' do
   from_source node['golang']['from_source']
   version node['golang']['version'] if node['golang']['version'] # go version
+  install_dir node['golang']['install_dir'] if node['golang']['install_dir'] # go install_dir - e.g. /opt or /usr/local
   source_version node['golang']['source_version'] if node['golang']['source_version'] # go version from source
   scm node['golang']['scm']
   scm_packages node['golang']['scm_packages']
