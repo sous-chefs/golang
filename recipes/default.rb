@@ -2,7 +2,7 @@
 # Cookbook:: golang
 # Recipe:: default
 #
-# Copyright:: 2013, Alexander Rozhnov
+# Copyright:: 2013-2021, Alexander Rozhnov
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy

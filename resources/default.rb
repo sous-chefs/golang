@@ -2,7 +2,7 @@
 # Cookbook:: golang
 # Resource:: default
 #
-# Copyright:: 2020, Sous-chefs
+# Copyright:: 2020-2021, Sous-chefs
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not
 # use this file except in compliance with the License. You may obtain a copy
@@ -16,6 +16,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 #
+
+unified_mode true
 
 # Install golang by compiling from source
 property :from_source, [true, false], default: false
@@ -50,8 +52,6 @@ property :source_method, String, default: 'all.bash'
 # install SCM packages
 property :scm, [true, false], default: true
 property :scm_packages, [String, Array], default: %w(git mercurial)
-
-unified_mode
 
 action_class do
   def bin_url
