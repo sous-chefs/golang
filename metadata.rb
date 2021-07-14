@@ -17,4 +17,4 @@ supports 'amazon'
 supports 'scientific'
 supports 'oracle'
 
-depends 'ark', '~> 6.0'
+depends 'ark', '>= 6.0'
