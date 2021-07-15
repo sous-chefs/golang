@@ -2,7 +2,6 @@
 driver:
   name: dokken
   privileged: true
-  env: [CHEF_LICENSE=accept]
 
 transport:
   name: dokken
@@ -11,6 +10,7 @@ provisioner:
   name: dokken
   product_name: chef
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  chef_license: accept-no-persist
   install_strategy: once
 
 platforms:
