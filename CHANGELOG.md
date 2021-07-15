@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unreleased
+## 5.3.0 - *2021-07-15*
 
 - Fix `unified_mode` declaration
 - Bump `ark` dependency to one with `unified_mode` set
