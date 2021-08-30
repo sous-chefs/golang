@@ -4,6 +4,8 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 5.3.0 - *2021-07-15*
 
 - Fix `unified_mode` declaration
@@ -18,6 +20,8 @@ This file is used to list changes made in each version of golang.
 - Fix resource to use the correct path in GOPATH profile.d template
 
 ## 5.0.1 - *2021-06-01*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 5.0.0 - *2021-05-21*
 
