@@ -21,6 +21,10 @@ user 'golang' do
   manage_home true
 end
 
+group 'golang' do
+  members 'golang'
+end
+
 include_recipe 'golang'
 
 package 'gcc' # required for the "go test" in the inspec tests
