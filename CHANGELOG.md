@@ -4,7 +4,8 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
-- Remove delivery folder
+- Remove delivery and move to calling RSpec directly via a reusable workflow
+- Update tested platforms
 - Standardise files with files in sous-chefs/repo-management
 
 ## 5.3.1 - *2021-08-30*

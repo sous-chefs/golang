@@ -1,0 +1,29 @@
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_infra
+  deprecations_as_errors: true
+  product_name: <%= ENV['CHEF_PRODUCT_NAME'] || 'chef' %>
+  chef_license: accept-no-persist
+  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: almalinux-8
+  - name: amazonlinux-2
+  - name: debian-10
+  - name: debian-11
+  - name: centos-7
+  - name: centos-stream-8
+  - name: fedora-latest
+  - name: ubuntu-18.04
+  - name: ubuntu-20.04
+  - name: rockylinux-8
+  - name: opensuse-leap-15
+suites:
+  - name: default
+    run_list: test::default

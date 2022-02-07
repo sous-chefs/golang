@@ -17,7 +17,7 @@
 # under the License.
 #
 
-user node['golang']['owner'] do
+user 'golang' do
   manage_home true
 end
 
