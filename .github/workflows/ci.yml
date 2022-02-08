@@ -30,6 +30,9 @@ jobs:
         suite:
           - default
           - source
+        exclude:
+          - os: fedora-latest
+            suite: source
       fail-fast: false
 
     steps:
