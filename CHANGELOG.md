@@ -4,6 +4,8 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
+Standardise files with files in sous-chefs/repo-management
+
 ## 5.3.2 - *2022-02-09*
 
 - Remove delivery and move to calling RSpec directly via a reusable workflow
