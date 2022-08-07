@@ -44,3 +44,14 @@ suites:
         source_version: 1.13.12
         owner: golang
         group: golang
+
+  - name: install-dir
+    run_list:
+      - recipe[test::default]
+    attributes:
+      golang:
+        from_source: true
+        source_version: 1.13.12
+        owner: golang
+        group: golang
+        install_dir: /srv

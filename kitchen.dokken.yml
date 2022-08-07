@@ -3,9 +3,13 @@ driver:
   name: dokken
   privileged: true
 
-transport: { name: dokken }
-provisioner: { name: dokken }
-verifier: { name: inspec }
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+  chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
+  chef_license: accept-no-persist
 
 platforms:
   - name: almalinux-8

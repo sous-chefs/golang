@@ -30,9 +30,12 @@ jobs:
         suite:
           - default
           - source
+          - install-dir
         exclude:
           - os: fedora-latest
             suite: source
+          - os: fedora-latest
+            suite: install-dir
       fail-fast: false
 
     steps:
