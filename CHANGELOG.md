@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unreleased
+## 5.4.0 - *2022-08-08*
 
 - Use `node['golang']['install_dir']` attribute in default recipe.
 - Fix source installation issues
