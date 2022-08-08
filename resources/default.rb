@@ -112,18 +112,26 @@ action :install do
     package new_resource.scm_packages
   end
 
-  # pgk to install go binaries, doc, base packages
+  # pkg to install go binaries, doc, base packages
   # ark is not idempotent by itself. Check to see if the go binary is the correct version
   url = bin_url
   ark 'go' do
     url url
     version new_resource.version
     not_if "/usr/local/go-#{new_resource.version}/bin/go version | grep #{new_resource.version}"
+    not_if { new_resource.from_source }
   end
 
   ##### SOURCE BUILD
 
   if new_resource.from_source
+    bootstrap_go = ::File.join(Chef::Config[:file_cache_path], 'go-bootstrap')
+    ark 'go' do
+      url url
+      version new_resource.version
+      prefix_root bootstrap_go
+      not_if "test -x #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  && #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  version | grep #{new_resource.source_version}"
+    end
 
     directory ::File.join(new_resource.install_dir, 'go', 'bin') do
       recursive true
@@ -145,11 +153,12 @@ action :install do
 
     url = source_url
     ark 'go' do # resource with the same name, that's an issue.  Source install
+      path new_resource.install_dir
       url url
       version 'source'
-      action :put
       release_file '/tmp/ark_release_file'
       not_if "test -x #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  && #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  version | grep #{new_resource.source_version}"
+      action :put
     end
 
     # see if build already done
@@ -159,11 +168,18 @@ action :install do
       command "./#{new_resource.source_method}"
       environment({
         # Use the package-installed Go as the bootstrap version b/c Go is built with Go
-        GOROOT_BOOTSTRAP: "#{new_resource.install_dir}/go-#{new_resource.version}",
+        GOROOT_BOOTSTRAP: "#{bootstrap_go}/go-#{new_resource.version}",
         GOROOT: "#{new_resource.install_dir}/go",
         GOBIN: "#{new_resource.install_dir}/go/bin",
       })
       not_if "test -x #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  && #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  version | grep #{new_resource.source_version}"
+    end
+
+    # Cleanup bootstrap go if everything was installed properly
+    directory bootstrap_go do
+      recursive true
+      action :delete
+      only_if "test -x #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  && #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  version | grep #{new_resource.source_version}"
     end
   end
 end
