@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of golang.
 
-## Unreleased
+## 5.4.13 - *2023-05-17*
 
 ## 5.4.12 - *2023-04-17*
 
