@@ -48,6 +48,8 @@ Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
+- Use go install rather than go get to install packages through node attributes
+
 ## 5.4.0 - *2022-08-08*
 
 - Use `node['golang']['install_dir']` attribute in default recipe.
@@ -55,7 +57,7 @@ Standardise files with files in sous-chefs/repo-management
 
 ## 5.3.3 - *2022-08-07*
 
-Standardise files with files in sous-chefs/repo-management
+- Standardise files with files in sous-chefs/repo-management
 
 ## 5.3.2 - *2022-02-09*
 
