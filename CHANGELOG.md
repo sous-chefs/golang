@@ -4,6 +4,8 @@ This file is used to list changes made in each version of golang.
 
 ## Unreleased
 
+- Use go install rather than go get to install packages through node attributes
+
 ## 5.4.18 - *2024-05-03*
 
 ## 5.4.17 - *2024-05-03*
@@ -61,7 +63,7 @@ Standardise files with files in sous-chefs/repo-management
 
 ## 5.3.3 - *2022-08-07*
 
-Standardise files with files in sous-chefs/repo-management
+- Standardise files with files in sous-chefs/repo-management
 
 ## 5.3.2 - *2022-02-09*
 

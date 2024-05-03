@@ -24,7 +24,7 @@ default_action :install
 gocache = '/tmp/go'
 
 action :install do
-  execute "go get #{new_resource.name}" do
+  execute "go install #{new_resource.name}" do
     user node['golang']['owner']
     group node['golang']['group']
     environment({
