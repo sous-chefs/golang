@@ -18,9 +18,9 @@
 | directory_mode | mode for user directories               | String                   | Default 0755                       |
 | version        | Version of go to install                | String                   | Default 1.14.4                     |
 | source_version | Version of go to compile from source    | String                   | Default 1.14.4                     |
-| url            | Location of the golang binary package for the target version  | String              | Default https://golang.org/dl and computed from the OS and version |
+| url            | Location of the golang binary package for the target version  | String              | Default <https://golang.org/dl> and computed from the OS and version |
 | from_source    | Install and compile golang from source  | True, False              | Default false                       |
-| source_url     | Location of the golang source url for the source version      | String              | Default https://golang.org/dl and computed from the version |
+| source_url     | Location of the golang source url for the source version      | String              | Default <https://golang.org/dl> and computed from the version |
 | source_method  | Compile script in the golang source package | String              | Default all.bash                    |
 | scm            | Install SCM packages, git and mercurial | True, False             | Default True                        |
 | scm_packages   | Source control packages to install      | String, Array            | Default [git mercurial]            |

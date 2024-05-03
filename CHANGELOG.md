@@ -6,6 +6,56 @@ This file is used to list changes made in each version of golang.
 
 - Use go install rather than go get to install packages through node attributes
 
+## 5.4.18 - *2024-05-03*
+
+## 5.4.17 - *2024-05-03*
+
+## 5.4.16 - *2023-12-21*
+
+## 5.4.15 - *2023-09-28*
+
+## 5.4.14 - *2023-09-04*
+
+## 5.4.13 - *2023-05-17*
+
+## 5.4.12 - *2023-04-17*
+
+## 5.4.11 - *2023-04-07*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 5.4.10 - *2023-04-01*
+
+## 5.4.9 - *2023-04-01*
+
+## 5.4.8 - *2023-04-01*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 5.4.7 - *2023-03-20*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 5.4.6 - *2023-03-15*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 5.4.5 - *2023-03-02*
+
+## 5.4.4 - *2023-02-23*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 5.4.3 - *2023-02-15*
+
+## 5.4.2 - *2023-02-15*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 5.4.1 - *2022-12-15*
+
+Standardise files with files in sous-chefs/repo-management
+
 ## 5.4.0 - *2022-08-08*
 
 - Use `node['golang']['install_dir']` attribute in default recipe.
