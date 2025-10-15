@@ -5,6 +5,13 @@ This file is used to list changes made in each version of golang.
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [5.4.23](https://github.com/sous-chefs/golang/compare/5.4.22...v5.4.23) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#147](https://github.com/sous-chefs/golang/issues/147)) ([71b56a8](https://github.com/sous-chefs/golang/commit/71b56a841d4e0c21b249b74da70aa8ac359862da))
+
 ## 5.4.21 - *2024-11-18*
 
 Standardise files with files in sous-chefs/repo-management
