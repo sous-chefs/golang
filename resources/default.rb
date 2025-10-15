@@ -56,12 +56,12 @@ property :scm_packages, [String, Array], default: %w(git mercurial)
 action_class do
   def bin_url
     return new_resource.url if property_is_set?(:url)
-    new_resource.url.sub(/PLATFORM/, platform).sub(/OS/, os).sub(/VERSION/, new_resource.version)
+    new_resource.url.sub('PLATFORM', platform).sub('OS', os).sub('VERSION', new_resource.version)
   end
 
   def source_url
     return new_resource.source_url if property_is_set?(:source_url)
-    new_resource.source_url.sub(/VERSION/, new_resource.source_version)
+    new_resource.source_url.sub('VERSION', new_resource.source_version)
   end
 
   def os
@@ -101,7 +101,7 @@ action :install do
     source 'golang.sh.erb'
     mode new_resource.directory_mode
     variables gobin: new_resource.gobin,
-              gopath:  new_resource.gopath,
+              gopath: new_resource.gopath,
               install_dir: new_resource.install_dir
   end
 
@@ -167,11 +167,11 @@ action :install do
       cwd "#{new_resource.install_dir}/go/src"
       command "./#{new_resource.source_method}"
       environment({
-        # Use the package-installed Go as the bootstrap version b/c Go is built with Go
-        GOROOT_BOOTSTRAP: "#{bootstrap_go}/go-#{new_resource.version}",
-        GOROOT: "#{new_resource.install_dir}/go",
-        GOBIN: "#{new_resource.install_dir}/go/bin",
-      })
+                    # Use the package-installed Go as the bootstrap version b/c Go is built with Go
+                    GOROOT_BOOTSTRAP: "#{bootstrap_go}/go-#{new_resource.version}",
+                    GOROOT: "#{new_resource.install_dir}/go",
+                    GOBIN: "#{new_resource.install_dir}/go/bin",
+                  })
       not_if "test -x #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  && #{::File.join(new_resource.install_dir, 'go', 'bin', 'go')}  version | grep #{new_resource.source_version}"
     end
 
