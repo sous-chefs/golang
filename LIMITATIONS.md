@@ -6,6 +6,10 @@ The `golang` resource installs official Go archives from `go.dev/dl` by default.
 Linux archives by operating system and architecture rather than by Linux distribution, so the same
 archive URL pattern is used across supported Linux distributions.
 
+The cookbook requires Chef Infra Client 17.5 or later. That version introduced
+`archive_file.strip_components`, which lets the cookbook extract Go archives with built-in Chef
+resources instead of depending on the external `ark` cookbook or platform `tar` behavior.
+
 ### Official Linux Archives
 
 * Go 1.26.3 is available as source and Linux archives for `386`, `amd64`, `arm64`, `armv6l`,

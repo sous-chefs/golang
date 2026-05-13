@@ -12,10 +12,14 @@ Chef cookbook for the [Go programming language](https://go.dev/).
 
 ## Requirements
 
+### Chef
+
+* Chef Infra Client >= 17.5
+
 ### Platform
 
 * AlmaLinux >= 8
-* Amazon Linux >= 2
+* Amazon Linux >= 2023
 * CentOS Stream >= 9
 * Debian >= 12
 * Fedora latest
