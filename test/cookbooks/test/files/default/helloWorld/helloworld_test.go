@@ -2,8 +2,6 @@ package helloworld
 
 import (
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestHelloWorld(t *testing.T) {
@@ -12,6 +10,8 @@ func TestHelloWorld(t *testing.T) {
 
 		output := HelloWorld()
 
-		assert.Equal(t, output, expected)
+		if output != expected {
+			t.Fatalf("expected %q, got %q", expected, output)
+		}
 	})
 }
