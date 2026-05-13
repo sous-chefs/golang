@@ -5,6 +5,39 @@ This file is used to list changes made in each version of golang.
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [6.0.0](https://github.com/sous-chefs/golang/compare/v5.4.23...v6.0.0) (2026-05-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate golang to custom resources ([#153](https://github.com/sous-chefs/golang/issues/153))
+* Requires Chef >= 14.0.0
+
+### Features
+
+* Allow different versions for source/package ([06bde5e](https://github.com/sous-chefs/golang/commit/06bde5e6c94771b917a1c53b205ba3a3a8d9aadd))
+* Install binary w/ ark, simplify source build ([59abc22](https://github.com/sous-chefs/golang/commit/59abc224d094c5ebef2b94b0ae4850784fe84631))
+* migrate golang to custom resources ([#153](https://github.com/sous-chefs/golang/issues/153)) ([04c8575](https://github.com/sous-chefs/golang/commit/04c8575c388df8c89967a53c5ffad4e47fdf189f))
+* Update default to Golang 1.14.4 ([96e1dad](https://github.com/sous-chefs/golang/commit/96e1dadf4fdf1f96306410f1b4145f56401feaf7))
+* Use build_essential resource ([779a9c5](https://github.com/sous-chefs/golang/commit/779a9c5a707b2a26b0d07eb89ce7e9ccb081b604))
+
+
+### Bug Fixes
+
+* Add final step to CI GH Actions ([3a45ae1](https://github.com/sous-chefs/golang/commit/3a45ae16a48ca663a0d6fa1e423b2a3bc7b49eba))
+* **ci:** Update workflows to use release pipeline ([#147](https://github.com/sous-chefs/golang/issues/147)) ([71b56a8](https://github.com/sous-chefs/golang/commit/71b56a841d4e0c21b249b74da70aa8ac359862da))
+* Clean up code per cookstyle ([89e8fcd](https://github.com/sous-chefs/golang/commit/89e8fcd65dec14f681036e9e2a67c231fda2424f))
+* Drop unnecessary default actions ([ae264c6](https://github.com/sous-chefs/golang/commit/ae264c6481ab36cdea721740a4f89a12edd9b319))
+* Omit SCM package bzr on CentOS 8 ([613f4c8](https://github.com/sous-chefs/golang/commit/613f4c819f7dd95600471e6db4d5de565068a535))
+* Remove deleted attribute from Kitchen config ([f9d65c4](https://github.com/sous-chefs/golang/commit/f9d65c4b9b54d4cfe67b8afd82995bae68d4f124))
+* Remove duplicate attribute declarations ([462f75f](https://github.com/sous-chefs/golang/commit/462f75f07c7acc2a7d5e66144f1d5e26ec3fa298))
+* Remove symlink to de-dupe tests ([113fa2e](https://github.com/sous-chefs/golang/commit/113fa2ec9b041bcf52dc8ab2448cea06bd0a2ba9))
+* Set $PATH so defaults are last ([3e40918](https://github.com/sous-chefs/golang/commit/3e40918ff10543a70739c87a5ee4939ba393267b))
+* Set SCM packages via attribute & update apt ([2a7d333](https://github.com/sous-chefs/golang/commit/2a7d333f209176dfd666dc6da075b90e241664bf))
+* Update locations of hello example & go-check ([f9a3af1](https://github.com/sous-chefs/golang/commit/f9a3af1d6fea5deacef003eaa9a5c4d19e56e327))
+* Update URL for Golang itself ([86c22bd](https://github.com/sous-chefs/golang/commit/86c22bd6f98bd9a30067906f49e5b186283cebb0))
+* Use cookbook name consistently ([b44e332](https://github.com/sous-chefs/golang/commit/b44e3328070adbad58ae28c57299f7bed2084dcd))
+
 ## [5.4.23](https://github.com/sous-chefs/golang/compare/5.4.22...v5.4.23) (2025-10-15)
 
 
