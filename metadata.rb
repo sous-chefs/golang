@@ -8,7 +8,7 @@ description       'Provides custom resources to install Go and Go packages'
 source_url        'https://github.com/sous-chefs/golang'
 issues_url        'https://github.com/sous-chefs/golang/issues'
 chef_version      '>= 17.5'
-version           '6.0.0'
+version           '7.0.0'
 
 supports 'almalinux', '>= 8.0'
 supports 'amazon', '>= 2023.0'
