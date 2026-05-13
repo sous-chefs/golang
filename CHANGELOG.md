@@ -5,6 +5,17 @@ This file is used to list changes made in each version of golang.
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [7.0.0](https://github.com/sous-chefs/golang/compare/v6.0.0...v7.0.0) (2026-05-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Chef Infra Client 17.5 or later is now required because archive_file strip_components was introduced in Chef 17.5.
+
+### Features
+
+* remove ark dependency ([#155](https://github.com/sous-chefs/golang/issues/155)) ([229430f](https://github.com/sous-chefs/golang/commit/229430fbf6cdfad17e36827cd3bcef821ab83c0f))
+
 ## [6.0.0](https://github.com/sous-chefs/golang/compare/v5.4.23...v6.0.0) (2026-05-13)
 
 
