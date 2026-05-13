@@ -2,6 +2,9 @@
 
 Installs the Go programming language from official binary archives or by building from source.
 
+This resource requires Chef Infra Client 17.5 or later so it can use the built-in `archive_file`
+resource with `strip_components` when expanding Go archives.
+
 ## Actions
 
 | Action     | Description |

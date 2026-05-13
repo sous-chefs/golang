@@ -59,9 +59,35 @@ action_class do
   def go_bin(version = new_resource.version)
     ::File.join(go_version_root(version), 'bin', 'go')
   end
+
+  def archive_path(url)
+    ::File.join(Chef::Config[:file_cache_path], 'go', ::File.basename(url))
+  end
+
+  def bootstrap_root
+    ::File.join(Chef::Config[:file_cache_path], 'go-bootstrap', "go-bootstrap-#{new_resource.version}")
+  end
+
+  def set_archive_locale
+    require 'ffi'
+
+    locale = Module.new do
+      extend FFI::Library
+      ffi_lib FFI::Library::LIBC
+      attach_function :setlocale, %i(int string), :string
+    end
+
+    %w(C.UTF-8 C.utf8 en_US.UTF-8).find do |candidate|
+      ENV['LANG'] = candidate
+      ENV['LC_ALL'] = candidate
+      locale.setlocale(6, candidate)
+    end
+  end
 end
 
 action :install do
+  set_archive_locale
+
   directory new_resource.gopath do
     recursive true
     owner new_resource.owner
@@ -102,30 +128,38 @@ action :install do
     package new_resource.scm_packages
   end
 
-  package 'tar'
-
   url = bin_url
-  ark 'go' do
-    path new_resource.install_dir
-    url url
-    version new_resource.version
-    not_if "#{go_bin} version | grep #{new_resource.version}"
-    not_if { new_resource.from_source }
+
+  unless new_resource.from_source
+    binary_archive = archive_path(url)
+
+    remote_file binary_archive do
+      source url
+    end
+
+    archive_file binary_archive do
+      destination go_version_root
+      strip_components 1
+      not_if "#{go_bin} version | grep #{new_resource.version}"
+    end
+
+    link go_root do
+      to go_version_root
+    end
   end
 
   if new_resource.from_source
-    bootstrap_go = ::File.join(Chef::Config[:file_cache_path], 'go-bootstrap')
+    bootstrap_archive = archive_path(url)
 
-    ark 'go-bootstrap' do
-      path bootstrap_go
-      url url
-      version new_resource.version
+    remote_file bootstrap_archive do
+      source url
       not_if "test -x #{go_root}/bin/go && #{go_root}/bin/go version | grep #{new_resource.source_version}"
     end
 
-    directory "#{go_root}/bin" do
-      recursive true
-      mode new_resource.directory_mode
+    archive_file bootstrap_archive do
+      destination bootstrap_root
+      strip_components 1
+      not_if "test -x #{go_root}/bin/go && #{go_root}/bin/go version | grep #{new_resource.source_version}"
     end
 
     build_essential
@@ -141,27 +175,31 @@ action :install do
     end
 
     url = source_url
-    ark 'go' do
-      path new_resource.install_dir
-      url url
-      version 'source'
-      release_file '/tmp/ark_release_file'
+    source_archive = archive_path(url)
+
+    remote_file source_archive do
+      source url
       not_if "test -x #{go_root}/bin/go && #{go_root}/bin/go version | grep #{new_resource.source_version}"
-      action :put
+    end
+
+    archive_file source_archive do
+      destination go_root
+      strip_components 1
+      not_if "test -x #{go_root}/bin/go && #{go_root}/bin/go version | grep #{new_resource.source_version}"
     end
 
     execute 'build-golang' do
       cwd "#{go_root}/src"
       command "./#{new_resource.source_method}"
       environment(
-        GOROOT_BOOTSTRAP: "#{bootstrap_go}/go-bootstrap-#{new_resource.version}",
+        GOROOT_BOOTSTRAP: bootstrap_root,
         GOROOT: go_root,
         GOBIN: "#{go_root}/bin"
       )
       not_if "test -x #{go_root}/bin/go && #{go_root}/bin/go version | grep #{new_resource.source_version}"
     end
 
-    directory bootstrap_go do
+    directory ::File.join(Chef::Config[:file_cache_path], 'go-bootstrap') do
       recursive true
       action :delete
       only_if "test -x #{go_root}/bin/go && #{go_root}/bin/go version | grep #{new_resource.source_version}"
