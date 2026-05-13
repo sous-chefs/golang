@@ -1,57 +1,45 @@
 ---
 driver:
-  name: dokken
-  chef_version: latest
-  privileged: true
-
-transport:
-  name: dokken
+  name: vagrant
 
 provisioner:
-  name: dokken
+  name: chef_infra
+  product_name: chef
+  enforce_idempotency: true
+  multiple_converge: 2
+  deprecations_as_errors: true
 
 verifier:
   name: inspec
 
 platforms:
   - name: almalinux-8
-  - name: amazonlinux-2
-  - name: centos-7
-  - name: centos-stream-8
-  - name: debian-10
-  - name: debian-11
+  - name: almalinux-9
+  - name: almalinux-10
+  - name: amazonlinux-2023
+  - name: centos-stream-9
+  - name: centos-stream-10
+  - name: debian-12
+  - name: debian-13
   - name: fedora-latest
-  - name: opensuse-leap-15
+  - name: oraclelinux-8
+  - name: oraclelinux-9
   - name: rockylinux-8
-  - name: ubuntu-18.04
-  - name: ubuntu-20.04
+  - name: rockylinux-9
+  - name: rockylinux-10
+  - name: ubuntu-22.04
+  - name: ubuntu-24.04
+
+x-run_lists:
+  default: &default_run_list
+    - recipe[test::default]
+
+x-verifiers:
+  default: &default_verifier
+    inspec_tests:
+      - path: test/integration/default
 
 suites:
   - name: default
-    run_list:
-      - recipe[test::default]
-    attributes:
-      golang:
-        owner: golang
-        group: golang
-
-  - name: source
-    run_list:
-      - recipe[test::default]
-    attributes:
-      golang:
-        from_source: true
-        source_version: 1.13.12
-        owner: golang
-        group: golang
-
-  - name: install-dir
-    run_list:
-      - recipe[test::default]
-    attributes:
-      golang:
-        from_source: true
-        source_version: 1.13.12
-        owner: golang
-        group: golang
-        install_dir: /srv
+    run_list: *default_run_list
+    verifier: *default_verifier

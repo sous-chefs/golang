@@ -8,48 +8,55 @@
 
 ## Description
 
-Chef cookbook for the [Go programming language](http://golang.org/).
+Chef cookbook for the [Go programming language](https://go.dev/).
 
 ## Requirements
 
 ### Platform
 
-* Ubuntu >= 18.04
-* Debian >= 8
-* CentOS >= 7
+* AlmaLinux >= 8
+* Amazon Linux >= 2
+* CentOS Stream >= 9
+* Debian >= 12
+* Fedora latest
+* Oracle Linux >= 8
+* Red Hat Enterprise Linux >= 8
+* Rocky Linux >= 8
+* Ubuntu >= 22.04
 
 ## Usage
 
-### golang::default
+This cookbook no longer ships recipes or attributes. See [migration.md](migration.md) for the
+breaking change from `recipe[golang]` and `node['golang']` attributes to custom resources.
 
-Include `golang` in your node's `run_list`:
+### Install Go
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[golang]"
-  ]
-}
+```ruby
+golang 'default'
 ```
 
-### golang::packages
+### Install Go as a workspace user
 
-To install Go packages using node attributes add the packages to the `['golang']['packages']` attribute:
-
-```json
-{
-  "name":"my_node",
-  "golang": {
-    "packages": [
-      "github.com/go-check/check"
-    ]
-  },
-  "run_list": [
-    "recipe[golang]"
-  ]
-}
+```ruby
+golang 'default' do
+  owner 'golang'
+  group 'golang'
+end
 ```
+
+### Install Go package binaries
+
+```ruby
+golang_package 'golang.org/x/example/hello' do
+  owner 'golang'
+  group 'golang'
+end
+```
+
+## Resources
+
+* [golang](documentation/golang_golang.md)
+* [golang_package](documentation/golang_package.md)
 
 ## Contributors
 
